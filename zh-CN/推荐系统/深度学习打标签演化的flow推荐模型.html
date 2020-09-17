@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>深度学习打标签演化的Flow推荐模型 | JAZZ IT UP</title>
+  <meta name="description" content="A geeker blog." />
+  <meta name="keywords" content="hexo,theme,icer,ggice" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基于OpenML框架的flow推荐  各种不同任务的深度学习标签的例子音乐: Pytorch implementation of “Sample-level Deep Convolutional Neural Networks for Music Auto-tagging Using Raw Waveforms” 词性: 使用CoNLL-2012数据集的一部分和42个可能的标记来实现RNN并比较">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习打标签演化的Flow推荐模型">
+<meta property="og:url" content="https://bingcheng.openmc.cn/zh-CN/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%89%93%E6%A0%87%E7%AD%BE%E6%BC%94%E5%8C%96%E7%9A%84flow%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8B.html">
+<meta property="og:site_name" content="JAZZ IT UP">
+<meta property="og:description" content="基于OpenML框架的flow推荐  各种不同任务的深度学习标签的例子音乐: Pytorch implementation of “Sample-level Deep Convolutional Neural Networks for Music Auto-tagging Using Raw Waveforms” 词性: 使用CoNLL-2012数据集的一部分和42个可能的标记来实现RNN并比较">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmkseryj31bk0imjtf.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmm3inmj31c409o408.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmmmhkaj314i07ywfy.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmnzuaaj31yu0jc79w.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmoiv6rj31lr0tcq6e.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmpf6u6j31by0kiwiv.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmpvuicj313p0u0dk4.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmss2oij31c80pmtet.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmttirgj31dx0u0tf3.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmuz7foj30dw0i8jt9.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmvh2cbj30go09s75j.jpg">
+<meta property="article:published_time" content="2019-06-14T01:22:41.000Z">
+<meta property="article:modified_time" content="2020-09-16T04:03:14.000Z">
+<meta property="article:author" content="胡炳城 Bingcheng">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="推荐系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmkseryj31bk0imjtf.jpg">
+  
+  
+    <link rel="icon" href="image/hbc.ico">
+  
+
+  <link rel='stylesheet' href='//cdn.staticfile.org/nprogress/0.2.0/nprogress.css'/>
+  <link rel="stylesheet" href="//cdn.staticfile.org/highlight.js/9.15.10/styles/github-gist.min.css">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_405585_yuudmyqpo3q.css">
+  <script src='//cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js'></script>
+  <!-- <script>try{Typekit.load({ async: false });}catch(e){}</script> -->
+  
+<link rel="stylesheet" href="/blog-zh/style.css">
+
+  
+
+  
+
+<!-- baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?403460ed7637fb6c4a9e09a74e662ca0";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+  
+<!-- End baidu Analytics -->
+
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+  
+  <script>NProgress.start();</script>
+  
+  <div id="site-wrapper">
+    
+    <header class="header">
+  <div class="header-wrapper">
+    <a href="/">
+      <img src="/image/logo.jpg" class="logo"/>
+      <!-- <span class="site-desc">
+        
+      </span> -->
+    </a>
+    <div class="social-wrapper">
+      
+        
+          <a href="https://twitter.com/iggice" class="social twitter" target="_blank" rel="external">
+            <span class="iconfont icon-twitter"></span>
+          </a>
+          
+          <a href="https://github.com/ggice" class="social github" target="_blank" rel="external">
+            <span class="iconfont icon-github"></span>
+          </a>
+          
+          <a href="http://ggice.lofter.com/" class="social lofter" target="_blank" rel="external">
+            <span class="iconfont icon-lofter"></span>
+          </a>
+          
+          <a href="https://dribbble.com/ggice" class="social dribbble" target="_blank" rel="external">
+            <span class="iconfont icon-dribbble"></span>
+          </a>
+          
+          <a href="mailto:i@ice.gs" class="social email" target="_blank" rel="external">
+            <span class="iconfont icon-email"></span>
+          </a>
+          
+          <a href="/atom.xml" class="social rss" target="_blank" rel="external">
+            <span class="iconfont icon-rss"></span>
+          </a>
+          
+      
+      
+      <a href="#" class="social search-do" target="_blank" rel="external">
+        <span class="iconfont icon-search"></span>
+      </a>
+            
+      <!-- <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://bingcheng.openmc.cn"></form> -->
+    </div>
+    <div class="search-wrap">
+      <div class="search-content animated fade-in">
+        <p class="search-input">
+          <span class="iconfont icon-search"></span>
+          <input tabindex="1">
+        </p>
+        <ul class="search-result">
+            
+              <div class="tags">
+                   <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/FaceDetection/" rel="tag">FaceDetection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/Japan/" rel="tag">Japan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/arduino/" rel="tag">arduino</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/mathematic/" rel="tag">mathematic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/probability/" rel="tag">probability</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/travel/" rel="tag">travel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E5%88%B6%E4%BD%9C/" rel="tag">制作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E5%B9%B3%E8%A1%A1%E8%BD%A6/" rel="tag">平衡车</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" rel="tag">推荐系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%97%A0%E7%A2%B3%E5%B0%8F%E8%BD%A6/" rel="tag">无碳小车</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E9%99%80%E8%9E%BA%E4%BB%AA/" rel="tag">陀螺仪</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+                </div>
+            
+        </ul>
+      </div>
+    </div>
+    <nav class="header-nav">
+      
+        <a href="/" class="archives">
+          home
+        </a>
+        
+        <a href="/tags/web-development/" class="archives">
+          web development
+        </a>
+        
+        <a href="/tags/soft/" class="archives">
+          soft
+        </a>
+        
+        <a href="/tags/os/" class="archives">
+          os
+        </a>
+        
+        <a href="/archives" class="archives">
+          archives
+        </a>
+        
+        <a href="/README/" class="archives">
+          README
+        </a>
+        
+    </nav>
+  </div>
+</header>
+    <script>NProgress.set(0.4);</script>
+    
+    <main id="main" role="main">
+      <article id="post-深度学习打标签演化的flow推荐模型"
+  class="post article white-box article-type-post animated fade-in-top"
+  itemscope itemprop="blogPost">
+  <section class="post-header article-header">
+    <h2 class="title">
+        <a href="/blog-zh/zh-CN/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%89%93%E6%A0%87%E7%AD%BE%E6%BC%94%E5%8C%96%E7%9A%84flow%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8B.html">
+          深度学习打标签演化的Flow推荐模型
+        </a>
+      </h2>
+      <div class="subtitle">
+          <time>
+            6月 14, 2019
+          </time>
+          
+            <span class="tags">
+                <span class="iconfont icon-tag"></span>
+                <a class="tag-none-link" href="/blog-zh/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" rel="tag">推荐系统</a> / <a class="tag-none-link" href="/blog-zh/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a> / <a class="tag-none-link" href="/blog-zh/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a>
+              </span>
+          
+      </div>
+  </section>
+  <section class="content">
+    <div class="article-entry" itemprop="articleBody">
+      <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmkseryj31bk0imjtf.jpg" alt="inline"></p>
+<p>基于OpenML框架的flow推荐</p>
+<hr>
+<h2 id="各种不同任务的深度学习标签的例子"><a href="#各种不同任务的深度学习标签的例子" class="headerlink" title="各种不同任务的深度学习标签的例子"></a>各种不同任务的深度学习标签的例子</h2><p><a target="_blank" rel="noopener" href="https://github.com/kyungyunlee/sampleCNN-pytorch">音乐</a>: Pytorch implementation of “Sample-level Deep Convolutional Neural Networks for Music Auto-tagging Using Raw Waveforms”</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/kyungyunlee/sampleCNN-pytorch">词性</a>: 使用CoNLL-2012数据集的一部分和42个可能的标记来实现RNN并比较不同类型的RNN的词性标记任务。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/SendongZhao/RNN-for-tagging">RNN-for-tagging</a>: Pytorch implementation of LSTM, Bi-LSTM and Bi-LSTM-CRF which are in the context of NER.</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Emrys-Hong/fastai_sequence_tagging">命名实体识别</a>（NER）：sequence tagging for NER for ULMFiT</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/akurniawan/pytorch-sequence-tagger">Sequence Tagger implementation</a>：build model that is used for sequence tagging (POS Tag, NER, etc.). </p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/tensorflow/building-a-text-classification-model-with-tensorflow-hub-and-estimators-3169e7aa568">电影多标签分类器</a>：使用TensorFlow Hub和Estimators构建文本分类模型</p>
+<p><a target="_blank" rel="noopener" href="https://www.dlology.com/blog/how-to-do-multi-class-multi-label-classification-for-news-categories/">新闻话题地点多标签分类</a>：With a given news, our task is to give it one or multiple tags. The dataset is divided into five main categories.</p>
+<p><a target="_blank" rel="noopener" href="https://machinelearningmastery.com/multi-class-classification-tutorial-keras-deep-learning-library/">鸢尾花分类</a>：多标签图片分类。标签总量少。</p>
+<hr>
+<h2 id="相关技术"><a href="#相关技术" class="headerlink" title="相关技术"></a>相关技术</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0fb6c9886542">ULMFiT</a>-用于文本分类的通用语言模型微调：一种可以在任何自然语言处理任务上实现类似CV的转移学习的方法。</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/16e1f6a7aaef">命名实体识别</a>（NER）：是信息提取、问答系统、句法分析、机器翻译等应用领域的重要基础工具，在自然语言处理技术走向实用化的过程中占有重要地位。一般来说，命名实体识别的任务就是识别出待处理文本中三大类（实体类、时间类和数字类）、七小类（人名、机构名、地名、时间、日期、货币和百分比）命名实体。</p>
+<p>自然语言处理（NLP）</p>
+<p><a target="_blank" rel="noopener" href="https://www.depends-on-the-definition.com/guide-to-multi-label-classification-with-neural-networks/">多标签文本分类</a>：用于提取社交网络上的对话是否含有辱骂、威胁、赞扬等信息。</p>
+<hr>
+<h2 id="再次重复说明OpenML构造"><a href="#再次重复说明OpenML构造" class="headerlink" title="再次重复说明OpenML构造"></a>再次重复说明OpenML构造</h2><p>每个data对应多个task：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmm3inmj31c409o408.jpg" alt="inline"></p>
+<p>每个task对应一个data：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmmmhkaj314i07ywfy.jpg" alt="inline"></p>
+<p>每个task对应多个flow，每个flow对应多个run:</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmnzuaaj31yu0jc79w.jpg" alt="inline"></p>
+<p>每个run对应data+task+flow</p>
+<hr>
+<h2 id="用图片说明OpenML构造"><a href="#用图片说明OpenML构造" class="headerlink" title="用图片说明OpenML构造"></a>用图片说明OpenML构造</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmoiv6rj31lr0tcq6e.jpg" alt="inline"></p>
+<hr>
+<h2 id="任务说明"><a href="#任务说明" class="headerlink" title="任务说明"></a>任务说明</h2><p>为了简化过程，暂时使用以下方法：</p>
+<ul>
+<li>由于每个data所对应的多个task中，排名第一的往往比第二的运行次数多很多，所以取第一个为最佳task。</li>
+<li>然后在选中的task中选取前n名为flow。</li>
+</ul>
+<p><strong>详细说明如下：</strong></p>
+<hr>
+<h2 id="数据集分析"><a href="#数据集分析" class="headerlink" title="数据集分析"></a>数据集分析</h2><ul>
+<li>数据集的介绍</li>
+</ul>
+<p>忽略自带的tag，无用。</p>
+<p>数据库介绍使用文本来找出task-type。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmpf6u6j31by0kiwiv.jpg" alt="inline"></p>
+<hr>
+<h2 id="数据集分析-1"><a href="#数据集分析-1" class="headerlink" title="数据集分析"></a>数据集分析</h2><ul>
+<li>数据集的特征</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmpvuicj313p0u0dk4.jpg" alt="inline"></p>
+<hr>
+<h2 id="data中选取task的方法"><a href="#data中选取task的方法" class="headerlink" title="data中选取task的方法"></a>data中选取task的方法</h2><p>对于不达标的task，忽略，防止训练内容有误。</p>
+<p>此处选择 $n = 1$。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmss2oij31c80pmtet.jpg" alt="inline"></p>
+<hr>
+<h2 id="task中选取flow方法"><a href="#task中选取flow方法" class="headerlink" title="task中选取flow方法"></a>task中选取flow方法</h2><p>按照精度排序（这儿假设performance就是accuracy）选取前n个。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmttirgj31dx0u0tf3.jpg" alt="inline"></p>
+<hr>
+<h2 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h2><p>由于我们的task是不能互通的，每个task必须针对特定的data生成。所以我们不能推荐task，而是推荐task-type。这个之前已经成功实现且acc&gt;80%。所以此处忽略。</p>
+<p>此处仅仅训练data推荐flow：训练集为<br>（data的properties）：(flow)</p>
+<blockquote>
+<p>我只做了一个小的csv数据集，内容为</p>
+<p>dataid-properties-flow1-flow2-…-flow5</p>
+<p>共50条用来测试。</p>
+</blockquote>
+<hr>
+<h2 id="机器学习算法-暂时pass"><a href="#机器学习算法-暂时pass" class="headerlink" title="机器学习算法(暂时pass)"></a>机器学习算法(暂时pass)</h2><p>2.3.3 用于多分类的线性模型</p>
+<p>将二分类算法推广到多分类算法的一种常见方法是“一对其余”(one-vs.-rest)方<br>法。</p>
+<p>然而，flow数量很多，二分类算法运行效果的双边基数相差太大，用线性二分类难以区分。</p>
+<p>2.3.6 决策树</p>
+<p>对于维度非常高的稀疏数据(比如文本数据)，随机森林的表现往往不是很好。对于这种数据，使用线性模型可能更合适。</p>
+<p>即使是非常大的数据集，随机森林的表现通常也很好！不过，随机森林需要更大的内存，训练和预测的速度也比线性模型要慢。</p>
+<hr>
+<h2 id="单标签任务-iris数据集示范-改写失败"><a href="#单标签任务-iris数据集示范-改写失败" class="headerlink" title="单标签任务(iris数据集示范-改写失败)"></a>单标签任务(iris数据集示范-改写失败)</h2><p>参考书籍-其它<a target="_blank" rel="noopener" href="https://www.kaggle.com/kernels/scriptcontent/1380110/download">网页</a>：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmuz7foj30dw0i8jt9.jpg" alt="inline"></p>
+<ul>
+<li>使用<code>特征值-分类</code>方法，由于之前爬取数据太全面，导致速度慢，爬取数据量少。全部数据仅有50个data和20000个flow。</li>
+<li>由于数据量少，而标签（flow）数量是data的很多倍。</li>
+<li>且由于单标签，不能用于flow推荐算法。</li>
+</ul>
+<hr>
+<h2 id="任务构造-理想"><a href="#任务构造-理想" class="headerlink" title="任务构造(理想)"></a>任务构造(理想)</h2><blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.depends-on-the-definition.com/guide-to-multi-label-classification-with-neural-networks/">Guide To Multi-Class Multi-Label Classification With Neural Networks In Python</a></p>
+</blockquote>
+<ol>
+<li>将数据集看做需要打标签的目标；</li>
+<li>将flow的id看做标签；</li>
+<li>首先将数据集的特征值归一化；</li>
+<li>然后类似文本分类(文本分类是单词存在标1，否则0)，将特征看做文本单词，权重[0，1]；与特征的顺序无关（特征没有前后之分）;</li>
+<li>挑出所有用到的flow作为标签, <strong>将标签转换为多热编码</strong><br>flows = [ flow1, flow2, flow3, … ]<br>[ 0  0  0  1  0  0  0  1  0 … ]</li>
+<li>进行数据特征学习分类。</li>
+</ol>
+<hr>
+<h2 id="为什么任然不能使用？"><a href="#为什么任然不能使用？" class="headerlink" title="为什么任然不能使用？"></a><strong>为什么任然不能使用？</strong></h2><p>由于文本和特征值还是有很大区别。</p>
+<p>这个算法可以用来进行<strong>data的描述分辨tasktype</strong>。</p>
+<hr>
+<h2 id="与常规任务比较分析"><a href="#与常规任务比较分析" class="headerlink" title="与常规任务比较分析"></a>与<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1169364">常规任务</a>比较分析</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmvh2cbj30go09s75j.jpg" alt="inline"></p>
+<ol>
+<li>常规多标签任务标签量少：比如对 iris flower 分类，只有十种。若是类似识别任务的种类多，但是不是多标签，是单标签。</li>
+<li>常规多标签任务标签不分先后：比如-红色-衣服-有口袋 这种，不分先后。</li>
+<li>常规多标签任务基于图片分析，或者是长段文字分析。</li>
+</ol>
+<hr>
+<h2 id="不足之处的解决或规避方法"><a href="#不足之处的解决或规避方法" class="headerlink" title="不足之处的解决或规避方法"></a>不足之处的解决或规避方法</h2><p>由于推荐的目标是达到最高性能，所以忽略了人的信息。暂时不管。</p>
+<p>当前挑出所有用到的flow作为标签, <strong>将标签转换为多热编码</strong><br>flows = [ flow1, flow2, flow3, … ]<br>[ 0  0  0  1  0  0  0  1  0 … ]<br>这样不好，丢失了排序信息。所以我们应该使用小数编码，将性能表现为0-1之间的小数，[ 0.988  0.983  0.970  0.838 … ]</p>
+<hr>
+<h2 id="接下来怎么办？"><a href="#接下来怎么办？" class="headerlink" title="接下来怎么办？"></a>接下来怎么办？</h2><p>希望可以找到与我的openml数据集类似的数据集。</p>
+<p>现在测试过：</p>
+<ul>
+<li>基于图片的分类</li>
+<li>图片的多标签任务</li>
+<li>基于文本(一长段文字)的多标签</li>
+<li>基于数据特征(iris)的分类</li>
+</ul>
+<p>希望找到：</p>
+<ul>
+<li>基于数据特征的多标签</li>
+</ul>
+
+    </div>
+  </section>
+
+  
+  
+</article>
+      <script>NProgress.set(0.6);</script>
+    </main>
+    
+    <footer class="footer">
+  <div class="footer-wrap">
+    <div class="footer-link">
+      
+      <h3>LINKS</h3>
+      <p>
+        
+          <a href="http://1x0.xyz/" target="_blank">Tian1x0</a>
+        
+          <a href="http://www.royalmice.com/hankzhou/" target="_blank">Hankzhou</a>
+        
+          <a href="http://sjydh.me/" target="_blank">设计有点货</a>
+        
+          <a href="https://developers.google.com/web/fundamentals/" target="_blank">Web fundamentals</a>
+        
+      </p>
+      
+    </div>
+    <div class="footer-tags">
+      
+        <h3>TAGS</h3>        
+        <div class="tags">
+             <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/FaceDetection/" rel="tag">FaceDetection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/Japan/" rel="tag">Japan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/arduino/" rel="tag">arduino</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/mathematic/" rel="tag">mathematic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/probability/" rel="tag">probability</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/travel/" rel="tag">travel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E5%88%B6%E4%BD%9C/" rel="tag">制作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E5%B9%B3%E8%A1%A1%E8%BD%A6/" rel="tag">平衡车</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" rel="tag">推荐系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%97%A0%E7%A2%B3%E5%B0%8F%E8%BD%A6/" rel="tag">无碳小车</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E9%99%80%E8%9E%BA%E4%BB%AA/" rel="tag">陀螺仪</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+          </div>
+      
+    </div>
+    <div class="footer-info">
+        <div>Theme <span class="codename"><a href="https://github.com/GGICE/hexo-icer" target="_blank">icer</a></span> designed & coded by <a href="https://ice.gs/" target="_blank">GGICE</a></div>
+        <div>Copyright &copy; 2020, <a href="/">JAZZ IT UP</a>  . All rights reserved .</div>
+      </div>
+  </div>
+</footer>
+
+
+    <script>NProgress.set(0.8);</script>
+    
+  </div>
+
+  <script src="//cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/blog-zh/js/main.js"></script>
+
+
+<!-- Commit -->
+
+
+
+  <script>
+    NProgress.done();
+  </script>
+  
+</body>
+</html>

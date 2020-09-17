@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>基于深度学习的推荐系统 | JAZZ IT UP</title>
+  <meta name="description" content="A geeker blog." />
+  <meta name="keywords" content="hexo,theme,icer,ggice" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Deep Learning based Recommender System 本文的概念主要内容来自：arXiv:1707.07435v6  一个电影推荐系统（基于tensorflow）示例的运行。 一个文本深度学习的电影推荐系统，包含看过这个的人也看过，和你一样的人看过（猜你喜欢）。     contributions of the survey(1) We conduct a systemat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于深度学习的推荐系统">
+<meta property="og:url" content="https://bingcheng.openmc.cn/zh-CN/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">
+<meta property="og:site_name" content="JAZZ IT UP">
+<meta property="og:description" content="Deep Learning based Recommender System 本文的概念主要内容来自：arXiv:1707.07435v6  一个电影推荐系统（基于tensorflow）示例的运行。 一个文本深度学习的电影推荐系统，包含看过这个的人也看过，和你一样的人看过（猜你喜欢）。     contributions of the survey(1) We conduct a systemat">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscvdnhhsj306q084wen.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscvkq1n2j30680840sv.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscvm6txvj30840a0jrv.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscvnhv8fj30dc03k3yn.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscvpyyrsj31d60qijwy.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscvx0mfij312k0mg78z.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscw1lipoj311u0pwjut.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscw35f3ij30lc0dcwf2.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscw8p9s7j3071053dfq.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscwaxyb7j308c05f74b.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscwijjvhj307n053q2u.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscwq36hpj308c05nwed.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscwv7zryj308c03swef.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscwxedodj309x04iglq.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscwzpwa6j30lc0ah3zj.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscx1m8nuj30jj0a6dgl.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscx355d3j30cr0bi0t4.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscx5hy56j30lc08z0tk.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscx8rx7kj30kf0g6wfy.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscx9kyrjj30jl0fagmi.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscxbxcg9j30lc0jyq4g.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscxcv1fhj30ft05mglv.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscxed5e4j30l408ewf1.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscxg8tpdj306p05tjre.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscxmcatbj30ae04fjrb.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscxt9qrbj30l2050t8v.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscxzf0uyj31ee0nugns.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscy0d9ysj30sg0lcdji.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscy3nty5j31hk0lmjuy.jpg">
+<meta property="article:published_time" content="2019-06-06T15:09:29.000Z">
+<meta property="article:modified_time" content="2020-09-16T04:03:14.046Z">
+<meta property="article:author" content="胡炳城 Bingcheng">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="推荐系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscvdnhhsj306q084wen.jpg">
+  
+  
+    <link rel="icon" href="image/hbc.ico">
+  
+
+  <link rel='stylesheet' href='//cdn.staticfile.org/nprogress/0.2.0/nprogress.css'/>
+  <link rel="stylesheet" href="//cdn.staticfile.org/highlight.js/9.15.10/styles/github-gist.min.css">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_405585_yuudmyqpo3q.css">
+  <script src='//cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js'></script>
+  <!-- <script>try{Typekit.load({ async: false });}catch(e){}</script> -->
+  
+<link rel="stylesheet" href="/blog-zh/style.css">
+
+  
+
+  
+
+<!-- baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?403460ed7637fb6c4a9e09a74e662ca0";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+  
+<!-- End baidu Analytics -->
+
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+  
+  <script>NProgress.start();</script>
+  
+  <div id="site-wrapper">
+    
+    <header class="header">
+  <div class="header-wrapper">
+    <a href="/">
+      <img src="/image/logo.jpg" class="logo"/>
+      <!-- <span class="site-desc">
+        
+      </span> -->
+    </a>
+    <div class="social-wrapper">
+      
+        
+          <a href="https://twitter.com/iggice" class="social twitter" target="_blank" rel="external">
+            <span class="iconfont icon-twitter"></span>
+          </a>
+          
+          <a href="https://github.com/ggice" class="social github" target="_blank" rel="external">
+            <span class="iconfont icon-github"></span>
+          </a>
+          
+          <a href="http://ggice.lofter.com/" class="social lofter" target="_blank" rel="external">
+            <span class="iconfont icon-lofter"></span>
+          </a>
+          
+          <a href="https://dribbble.com/ggice" class="social dribbble" target="_blank" rel="external">
+            <span class="iconfont icon-dribbble"></span>
+          </a>
+          
+          <a href="mailto:i@ice.gs" class="social email" target="_blank" rel="external">
+            <span class="iconfont icon-email"></span>
+          </a>
+          
+          <a href="/atom.xml" class="social rss" target="_blank" rel="external">
+            <span class="iconfont icon-rss"></span>
+          </a>
+          
+      
+      
+      <a href="#" class="social search-do" target="_blank" rel="external">
+        <span class="iconfont icon-search"></span>
+      </a>
+            
+      <!-- <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://bingcheng.openmc.cn"></form> -->
+    </div>
+    <div class="search-wrap">
+      <div class="search-content animated fade-in">
+        <p class="search-input">
+          <span class="iconfont icon-search"></span>
+          <input tabindex="1">
+        </p>
+        <ul class="search-result">
+            
+              <div class="tags">
+                   <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/FaceDetection/" rel="tag">FaceDetection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/Japan/" rel="tag">Japan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/arduino/" rel="tag">arduino</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/mathematic/" rel="tag">mathematic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/probability/" rel="tag">probability</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/travel/" rel="tag">travel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E5%88%B6%E4%BD%9C/" rel="tag">制作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E5%B9%B3%E8%A1%A1%E8%BD%A6/" rel="tag">平衡车</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" rel="tag">推荐系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%97%A0%E7%A2%B3%E5%B0%8F%E8%BD%A6/" rel="tag">无碳小车</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E9%99%80%E8%9E%BA%E4%BB%AA/" rel="tag">陀螺仪</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+                </div>
+            
+        </ul>
+      </div>
+    </div>
+    <nav class="header-nav">
+      
+        <a href="/" class="archives">
+          home
+        </a>
+        
+        <a href="/tags/web-development/" class="archives">
+          web development
+        </a>
+        
+        <a href="/tags/soft/" class="archives">
+          soft
+        </a>
+        
+        <a href="/tags/os/" class="archives">
+          os
+        </a>
+        
+        <a href="/archives" class="archives">
+          archives
+        </a>
+        
+        <a href="/README/" class="archives">
+          README
+        </a>
+        
+    </nav>
+  </div>
+</header>
+    <script>NProgress.set(0.4);</script>
+    
+    <main id="main" role="main">
+      <article id="post-基于深度学习的推荐系统"
+  class="post article white-box article-type-post animated fade-in-top"
+  itemscope itemprop="blogPost">
+  <section class="post-header article-header">
+    <h2 class="title">
+        <a href="/blog-zh/zh-CN/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">
+          基于深度学习的推荐系统
+        </a>
+      </h2>
+      <div class="subtitle">
+          <time>
+            6月 6, 2019
+          </time>
+          
+            <span class="tags">
+                <span class="iconfont icon-tag"></span>
+                <a class="tag-none-link" href="/blog-zh/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" rel="tag">推荐系统</a> / <a class="tag-none-link" href="/blog-zh/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a> / <a class="tag-none-link" href="/blog-zh/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a>
+              </span>
+          
+      </div>
+  </section>
+  <section class="content">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="Deep-Learning-based-Recommender-System"><a href="#Deep-Learning-based-Recommender-System" class="headerlink" title="Deep Learning based Recommender System"></a>Deep Learning based Recommender System</h1><blockquote>
+<p>本文的概念主要内容来自：arXiv:1707.07435v6</p>
+<ul>
+<li>一个电影推荐系统（基于tensorflow）示例的运行。</li>
+<li>一个文本深度学习的电影推荐系统，包含<strong>看过这个的人也看过</strong>，<strong>和你一样的人看过</strong>（猜你喜欢）。</li>
+</ul>
+</blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscvdnhhsj306q084wen.jpg" alt="img"><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscvkq1n2j30680840sv.jpg" alt="img"><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscvm6txvj30840a0jrv.jpg" alt="img"></p>
+<hr>
+<h2 id="contributions-of-the-survey"><a href="#contributions-of-the-survey" class="headerlink" title="contributions of the survey"></a>contributions of the survey</h2><p>(1) We conduct a <strong>systematic review</strong> for recommendation models based on deep learning techniques and propose a <strong>classification scheme</strong> to position and organize the current work; </p>
+<p>(2) We provide an overview and summary for the state-of-the-arts. 提供现有技术的概述和总结</p>
+<p>(3) We discuss the challenges and open issues, and identify the new trends and future directions in this research field to share the vision and expand the horizons of deep learning based recommender system research.</p>
+<hr>
+<h2 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h2><ul>
+<li>the preliminaries for recommender systems and deep neural networks</li>
+<li>the advantages and disadvantages of deep neural network based recommendation models</li>
+<li>presents our classification framework</li>
+<li>gives detailed introduction to the state-of-the-art</li>
+<li>challenges and prominent open research issues</li>
+</ul>
+<hr>
+<h2 id="Recommendation-models"><a href="#Recommendation-models" class="headerlink" title="Recommendation models"></a>Recommendation models</h2><p>classified into three categories [1, 69]: </p>
+<ul>
+<li>collaborative filtering, <ul>
+<li>通过学习用户项目历史交互来提出建议，无论是显式（例如用户先前的评级）还是隐式反馈（例如浏览历史）</li>
+</ul>
+</li>
+<li>content based <ul>
+<li>基于项目和用户之间的比较 (加上辅助信息，如文本，图像)</li>
+</ul>
+</li>
+<li>hybrid recommender system. <ul>
+<li>混合</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Deep-Learning-Techniques"><a href="#Deep-Learning-Techniques" class="headerlink" title="Deep Learning Techniques"></a>Deep Learning Techniques</h2><p>we consider any neural differentiable architecture as ‘deep learning‘ as long as it optimizes a differentiable objective function using a variant of stochastic gradient descent (SGD)</p>
+<hr>
+<h2 id="Deep-Learning-Techniques-1"><a href="#Deep-Learning-Techniques-1" class="headerlink" title="Deep Learning Techniques"></a>Deep Learning Techniques</h2><h3 id="rchitectural-paradigms"><a href="#rchitectural-paradigms" class="headerlink" title="rchitectural paradigms"></a>rchitectural paradigms</h3><ul>
+<li>多层感知器（MLP）</li>
+<li>[自动编码器（AE）](file:///Users/bingcheng/Google 云端硬盘/论文/deep learning recommendation/2018 Deep Learning based Recommender System- A Survey and New Perspectives.html#bookmark64)</li>
+<li>[递归神经网络（RNN）](file:///Users/bingcheng/Google 云端硬盘/论文/deep learning recommendation/2018 Deep Learning based Recommender System- A Survey and New Perspectives.html#bookmark94)</li>
+<li>受限玻尔兹曼机（RBM）</li>
+<li>[神经自回归分布估计（NADE）](file:///Users/bingcheng/Google 云端硬盘/论文/deep learning recommendation/2018 Deep Learning based Recommender System- A Survey and New Perspectives.html#bookmark130)</li>
+<li>[对抗网络（AN）](file:///Users/bingcheng/Google 云端硬盘/论文/deep learning recommendation/2018 Deep Learning based Recommender System- A Survey and New Perspectives.html#bookmark95)</li>
+<li>质量模型（AM）</li>
+<li>[深层强化学习（DRL）](file:///Users/bingcheng/Google 云端硬盘/论文/deep learning recommendation/2018 Deep Learning based Recommender System- A Survey and New Perspectives.html#bookmark155)</li>
+</ul>
+<hr>
+<h2 id="Why-Deep-Neural-Networks-for-Recommendation"><a href="#Why-Deep-Neural-Networks-for-Recommendation" class="headerlink" title="Why Deep Neural Networks for Recommendation?"></a>Why Deep Neural Networks for Recommendation?</h2><p>这里的关键优势是处理<em>基于内容的</em>推荐。</p>
+<p>例如，在处理文本数据，图像数据（社交帖子，产品图像）时，CNN / RNN成为不可或缺的神经构建块。传统的替代方案（设计模态特定的特征等）要处理评论，必须执行<em>昂贵</em>的预处理（例如，关键短语提取，主题建模等），而较新的基于深度学习的方法能够端到端地摄取所有文本信息[202]。</p>
+<p>总而言之，深度学习的在这方面的能力卓越，不用预处理，计算量小（提前需要进行训练的量大），可以瞬时推荐，但是这里没有说准确度等我们关系的问题，后面应该会讲到。</p>
+<hr>
+<h2 id="Summarize-the-strengths-of-deep-learning-based-recommendation-models"><a href="#Summarize-the-strengths-of-deep-learning-based-recommendation-models" class="headerlink" title="Summarize the strengths of deep learning based recommendation models"></a>Summarize the strengths of deep learning based recommendation models</h2><ul>
+<li><p>非线性变换</p>
+<p><em>该属性使得处理复杂的交互能够成为可能并精确地反映用户的偏好。</em></p>
+</li>
+<li><p>表征学习</p>
+<ol>
+<li>它减少了手工调参。调参是一项劳动密集型工作，深度神经网络能够在无人监督或监督的方法中自动从原始数据中学习特征；</li>
+<li>它使推荐模型能够包括异构内容信息，如文本，图像，音频甚至视频。</li>
+</ol>
+</li>
+<li><p>序列建模</p>
+<p>挖掘用户行为和时间演变之间的关系：用于机器翻译，自然语言理解，语音识别，聊天机器人等等</p>
+</li>
+<li><p>灵活性</p>
+<p>框架多：Tensorflow , Keras, Caffe, MXnet, DeepLearning4j , PyTorch, Theano…</p>
+</li>
+</ul>
+<hr>
+<h2 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h2><ul>
+<li><p>隐藏的权重和激活通常是不可解释的，限制了可解释性。</p>
+</li>
+<li><p>需要进行广泛的超参数调整</p>
+<p>最近的一项工作[145]，只引入了一个超参数。</p>
+</li>
+</ul>
+<hr>
+<h2 id="基于深度学习的推荐模型"><a href="#基于深度学习的推荐模型" class="headerlink" title="基于深度学习的推荐模型"></a>基于深度学习的推荐模型</h2><ol>
+<li>类别</li>
+<li>最先进的技术</li>
+</ol>
+<hr>
+<h3 id="基于深度学习的推荐模型的类别"><a href="#基于深度学习的推荐模型的类别" class="headerlink" title="基于深度学习的推荐模型的类别"></a>基于深度学习的推荐模型的类别</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscvnhv8fj30dc03k3yn.jpg" alt="img"></p>
+<hr>
+<h2 id="任务分类"><a href="#任务分类" class="headerlink" title="任务分类"></a>任务分类</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscvpyyrsj31d60qijwy.jpg" alt="img"></p>
+<hr>
+<h2 id="模型分类"><a href="#模型分类" class="headerlink" title="模型分类"></a>模型分类</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscvx0mfij312k0mg78z.jpg" alt="img"></p>
+<hr>
+<p>接下来论文花了十多页将各个模型分别介绍。</p>
+<p>略过难以借鉴的。</p>
+<p>MLP：Multilayer Perceptron based Recommendation，多层感知器</p>
+<p>可用于向现有RS方法添加非线性变换，并将其解释为神经扩展。</p>
+<ol>
+<li><em>NCF Neural Collaborative Filtering 神经协同过滤</em></li>
+<li>Deep Factorization Machine. DeepFM.<em>深度分解机</em></li>
+<li>…</li>
+</ol>
+<p><strong>过于繁杂难以理解</strong></p>
+<hr>
+<h2 id="未来的深度推荐发展方向"><a href="#未来的深度推荐发展方向" class="headerlink" title="未来的深度推荐发展方向"></a>未来的深度推荐发展方向</h2><ul>
+<li><p>提高可解释性</p>
+</li>
+<li><p>更深入</p>
+</li>
+<li><p>跨域推荐</p>
+</li>
+<li><p>多任务学习</p>
+</li>
+<li><p>可扩展性</p>
+<p>(无需掌握，略过)</p>
+</li>
+</ul>
+<hr>
+<h2 id="fit-深度学习实践"><a href="#fit-深度学习实践" class="headerlink" title="[fit]深度学习实践"></a>[fit]深度学习实践</h2><p>一个电影推荐系统（基于tensorflow）示例的运行。 一个文本深度学习的电影推荐系统，包含<strong>看过这个的人也看过</strong>，<strong>和你一样的人看过</strong>（猜你喜欢）。</p>
+<hr>
+<h2 id="手写数字识别的神经网络"><a href="#手写数字识别的神经网络" class="headerlink" title="手写数字识别的神经网络"></a>手写数字识别的神经网络</h2><p>书籍：Make Your Own Neural Network - 2016</p>
+<p>主要是学习神经网络相关知识，运行了示例程序。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscw1lipoj311u0pwjut.jpg" alt="img"></p>
+<hr>
+<h2 id="fit-神经网络基础概念"><a href="#fit-神经网络基础概念" class="headerlink" title="[fit]神经网络基础概念"></a>[fit]神经网络基础概念</h2><p>主要来自：Make Your Own Neural Network</p>
+<p>不清楚的搜了百度的解释。</p>
+<hr>
+<h2 id="1-神经元"><a href="#1-神经元" class="headerlink" title="1. 神经元"></a>1. 神经元</h2><p>正如神经元是大脑的基本单位一样，在神经网络结构中，神经元也是一个小单位。大家不妨想象一下当我们接触到新的信息时，大脑是如何运作的。</p>
+<p>首先，我们会在脑中处理这个信息，然后产生输出信息。在神经网络中也是如此，<strong>神经元接收到一个输入信息，然后对它进行加工处理，然后产生输出信息，传输到其他神经元中进行进一步信息处理。</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscw35f3ij30lc0dcwf2.jpg" alt="img"></p>
+<hr>
+<h2 id="2-权重"><a href="#2-权重" class="headerlink" title="2. 权重"></a>2. 权重</h2><p><strong>当输入信息到达神经元时，它就会乘上一个权重。</strong>举例来说，如果一个神经元包含两个输入信息，那么每个输入信息都被赋予它的关联权重。我们随机初始化权重，并在模型训练过程中更新这些权重。</p>
+<p>接受训练后的神经网络会赋予它认为重要的输入信息更高的权重值，而那些不重要的输入信息权重值则会相对较小。权重值为零就意味着这个特征是无关紧要的。</p>
+<p>我们不妨假设输入信息为 a，其关联权重为 W1, 通过节点后，输入信息变为 a*W1：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscw8p9s7j3071053dfq.jpg" alt="img"></p>
+<hr>
+<h2 id="3-偏置"><a href="#3-偏置" class="headerlink" title="3. 偏置"></a>3. 偏置</h2><p><strong>除了权重之外，输入还有另一个线性分量，被称为偏置。</strong>输入信息乘上权重后再加上偏置，用来改变权重乘输入的范围。加上偏置之后，结果就变为 a*W1+bias，这就是输入信息变换的最终线性分量。</p>
+<hr>
+<h2 id="4-激活函数"><a href="#4-激活函数" class="headerlink" title="4. 激活函数"></a>4. 激活函数</h2><p>**线性分量应用可以到输入信息，非线性函数也可以应用到输入信息。这种输入信息过程是通过激活函数来实现的。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscwaxyb7j308c05f74b.jpg" alt="img"></p>
+<p>最常用的激活函数有 Sigmoid、ReLU 和 softmax。</p>
+<hr>
+<ul>
+<li><strong>Sigmoid</strong>——Sigmoid 是最常用的激活函数之一。它的定义为：</li>
+</ul>
+<p>sigmoid(x) = 1/(1+e-x)</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscwijjvhj307n053q2u.jpg" alt="img"></p>
+<p>Sigmoid 函数会生成 0 到 1 之间的更平滑的取值范围。我们可能需要观察输出值的变化，同时输入值也会略有变化。而平滑的曲线更方便我们观察，因此它优于阶梯函数（step functions）。</p>
+<hr>
+<ul>
+<li><strong>ReLU（线性修正单位）</strong>——不同于 Sigmoid 函数，现在的网络更倾向于使用隐层 ReLu 激活函数。该函数的定义是：</li>
+</ul>
+<p>f(x) = max(x,0)</p>
+<p>当 X&gt;0 时，函数的输出为 X，当 X&lt;=0 时为 0。该函数如下所示：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscwq36hpj308c05nwed.jpg" alt="img"></p>
+<p>使用 ReLu 的好处主要是它对于大于 0 的所有输入值都有对应的不变导数值。而常数导数值可以加快对网络的训练。</p>
+<hr>
+<ul>
+<li><strong>Softmax</strong>——Softmax 激活函数常用于输出层的分类问题。它与 Sigmoid 函数类似，唯一的区别是在 Softmax 激活函数中，输出被归一化，总和变为 1。</li>
+</ul>
+<p>如果我们遇到的是二进制输出问题，就可以使用 Sigmoid 函数，而如果我们遇到的是多类型分类问题，使用 Softmax 函数可以轻松地为每个类型分配值，并且可以很容易地将这个值转化为概率。</p>
+<p>这样看可能更容易理解一些——假设你正在尝试识别一个看起来像 8 实际为 6 的数。该函数将为每个数字赋值，如下所示。我们可以很容易地看出，最高概率被分配给了 6，下一个最高概率则分配给 8，依此类推……</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscwv7zryj308c03swef.jpg" alt="img"></p>
+<hr>
+<h2 id="5-神经网络"><a href="#5-神经网络" class="headerlink" title="5. 神经网络"></a>5. 神经网络</h2><p>神经网络是深度学习的主干之一。<strong>神经网络的目标是找到未知函数的一个近似值。它由相互联系的神经元组成。</strong></p>
+<p>这些神经元具有权重，并且会根据出错情况，在网络训练期间更新偏置值。激活函数将非线性变换置于线性组合，之后生成输出。被激活的神经元组合再产生输出。</p>
+<p>对神经网络的定义中，以 Liping Yang 的最为贴切：</p>
+<blockquote>
+<p>神经网络由许多相互关联的概念化的人造神经元组成，这些人造神经元之间可以互相传递数据，并且具有根据网络「经验」调整的相关权重。</p>
+<p>神经元具有激活阈值，如果结合相关权重组合并激活传递给他们的数据，神经元的激活阈值就会被解除，激活的神经元的组合就会开始「学习」。</p>
+</blockquote>
+<hr>
+<h2 id="6-输入层-输出层-隐藏层"><a href="#6-输入层-输出层-隐藏层" class="headerlink" title="6. 输入层 / 输出层 / 隐藏层"></a>6. 输入层 / 输出层 / 隐藏层</h2><p>顾名思义，输入层是接收输入信号的一层，也是该网络的第一层；输出层则是传递输出信号的一层，也是该网络的最后一层。</p>
+<p>处理层则是该网络中的「隐含层」。<strong>这些「隐含层」将对输入信号进行特殊处理，并将生成的输出信号传递到下一层。</strong>输入层和输出层均是可见的，而其中间层则是隐藏起来的。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscwxedodj309x04iglq.jpg" alt="img"></p>
+<hr>
+<h2 id="7-MLP（多层神经网络）"><a href="#7-MLP（多层神经网络）" class="headerlink" title="7. MLP（多层神经网络）"></a>7. MLP（多层神经网络）</h2><p>单一神经元无法执行高度复杂的任务。因此，需要大量神经元聚集在一起才能生成我们所需要的输出信号。</p>
+<p>最简单的网络由一个输入层、一个输出层、一个隐含层组成，每一层上都有多个神经元，并且每一层上的神经元都和下一层上的神经元连接在了一起，这样的网络也被称为全互连网络（Fully Connected Networks）。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscwzpwa6j30lc0ah3zj.jpg" alt="img"></p>
+<hr>
+<h2 id="8-正向传播（Forward-Propagation）"><a href="#8-正向传播（Forward-Propagation）" class="headerlink" title="8. 正向传播（Forward Propagation）"></a>8. 正向传播（Forward Propagation）</h2><p><strong>正向传播指的是输入信号通过隐藏层传递到输出层的传递过程。</strong></p>
+<p>在正向传播中，信号仅沿单一方向向前正向传播，输入层将输入信号提供给隐藏层，隐藏层生成输出信号，这一过程中没有任何反向移动。</p>
+<hr>
+<h2 id="9-成本函数（Cost-Function）"><a href="#9-成本函数（Cost-Function）" class="headerlink" title="9. 成本函数（Cost Function）"></a>9. 成本函数（Cost Function）</h2><p>当我们建立一个网络后，网络将尽可能地使输出值无限接近于实际值。<strong>我们用成本函数（或损失函数）来衡量该网络完成这一过程的准确性。</strong>成本函数（或损失函数）将在该网络出错时，予以警告。</p>
+<p>运行网络时，我们的目标是：<strong>尽可能地提高我们的预测精度、减少误差，由此最小化成本函数。</strong>最优化的输出即当成本函数（或损失函数）为最小值时的输出。</p>
+<p>若将成本函数定义为均方误差，则可写成：</p>
+<p>C= 1/m ∑(y – a)2</p>
+<p>m 在这里是训练输入值（Training Inputs），a 是预计值，y 是特定事例中的实际值。</p>
+<p>学习过程围绕着如何最小化成本。</p>
+<hr>
+<h2 id="10-梯度下降（Gradient-Descent）"><a href="#10-梯度下降（Gradient-Descent）" class="headerlink" title="10. 梯度下降（Gradient Descent）"></a>10. 梯度下降（Gradient Descent）</h2><p><strong>梯度下降是一种成本最小化的优化算法。</strong>想象一下，当你下山时，你必须一小步一小步往下走，而不是纵身一跃跳到山脚。</p>
+<p>因此，我们要做的是：比如，我们从 X 点开始下降，我们下降一点点，下降 ΔH，到现在的位置，也就是 X-ΔH，重复这一过程，直到我们到达「山脚」。「山脚」就是最低成本点。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscx1m8nuj30jj0a6dgl.jpg" alt="img"></p>
+<p>从数学的角度来说，要找到函数的局部极小值，须采取与函数梯度负相关的「步子」，即：梯度下降法是用负梯度方向为搜索方向的，梯度下降法越接近目标值，步长越小，前进越慢。</p>
+<hr>
+<h2 id="11-学习速率（Learning-Rate）"><a href="#11-学习速率（Learning-Rate）" class="headerlink" title="11. 学习速率（Learning Rate）"></a>11. 学习速率（Learning Rate）</h2><p><strong>学习速率指每次迭代中对成本函数的最小化次数。</strong>简单来说，我们把下降到成本函数最小值的速率称为学习率。选择学习率时，我们必须非常小心，学习速率既不应过大——会错过最优解，也不应过小——使网络收敛将需要很多很多步、甚至永不可能。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscx355d3j30cr0bi0t4.jpg" alt="img"></p>
+<hr>
+<h2 id="12-反向传播（Back-Propagation）"><a href="#12-反向传播（Back-Propagation）" class="headerlink" title="12. 反向传播（Back Propagation）"></a>12. 反向传播（Back Propagation）</h2><p>在定义一个神经网络的过程中，每个节点会被随机地分配权重和偏置。</p>
+<p>一次迭代后，我们可以根据产生的结果计算出整个网络的偏差，然后用偏差结合成本函数的梯度，对权重因子进行相应的调整，使得下次迭代的过程中偏差变小。</p>
+<p><strong>这样一个结合成本函数的梯度来调整权重因子的过程就叫做反向传播。</strong>在反向传播中，信号的传递方向是朝后的，误差连同成本函数的梯度从输出层沿着隐藏层传播，同时伴随着对权重因子的调整。</p>
+<hr>
+<h2 id="13-分批（Batches）"><a href="#13-分批（Batches）" class="headerlink" title="13. 分批（Batches）"></a>13. 分批（Batches）</h2><p>当我们训练一个神经网路时，我们不应一次性发送全部输入信号，而应把输入信号随机分成几个大小相同的数据块发送。</p>
+<p>与将全部数据一次性送入网络相比，在训练时将数据分批发送，建立的模型会更具有一般性。</p>
+<hr>
+<h2 id="14-周期（Epochs）"><a href="#14-周期（Epochs）" class="headerlink" title="14. 周期（Epochs）"></a>14. 周期（Epochs）</h2><p>一个周期表示对所有的数据批次都进行了一次迭代，包括一次正向传播和一次反向传播，所以<strong>一个周期就意味着对所有的输入数据分别进行一次正向传播和反向传播。</strong></p>
+<p>训练网络周期的次数是可以选择的，往往周期数越高，模型的准确性就越高，但是，耗时往往就越长。同样你还需要考虑如果周期 / 纪元的次数过高，那么可能会出现过拟合的情况。</p>
+<hr>
+<h2 id="15-Dropout-方法"><a href="#15-Dropout-方法" class="headerlink" title="15. Dropout 方法"></a>15. Dropout 方法</h2><p>Dropout 是一个可以阻止网络过拟合的规则化方法。就像它的名字那样，在训练过程中隐藏的某些特定神经元会被忽略掉（drop）。</p>
+<p>这意味着<strong>网络的训练是在几个不同的结构上完成的</strong>。这种 Dropout 的方式就像是一场合奏，多个不同结构网络的输出组合产生最终的输出结果。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscx5hy56j30lc08z0tk.jpg" alt="img"></p>
+<hr>
+<h2 id="16-分批标准化（Batch-Normalization）"><a href="#16-分批标准化（Batch-Normalization）" class="headerlink" title="16. 分批标准化（Batch Normalization）"></a>16. 分批标准化（Batch Normalization）</h2><p>分批标准化就像是人们在河流中用以监测水位的监察站一样。</p>
+<p>这是为了<strong>保证下一层网络得到的数据拥有合适的分布</strong>。在训练神经网络的过程中，每一次梯度下降后权重因子都会得到改变，从而会改变相应的数据结构。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscx8rx7kj30kf0g6wfy.jpg" alt="img"></p>
+<hr>
+<p>但是下一层网络希望能够得到与之前分布相似的数据，因此在每一次数据传递前都需要对数据进行一次正则化处理。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscx9kyrjj30jl0fagmi.jpg" alt="img"></p>
+<hr>
+<h2 id="fit-卷积神经网络相关知识"><a href="#fit-卷积神经网络相关知识" class="headerlink" title="[fit]卷积神经网络相关知识"></a>[fit]卷积神经网络相关知识</h2><hr>
+<h2 id="17-过滤器-滤波器（Filters）"><a href="#17-过滤器-滤波器（Filters）" class="headerlink" title="17. 过滤器 / 滤波器（Filters）"></a>17. 过滤器 / 滤波器（Filters）</h2><p><strong>CNN 中的滤波器，具体是指将一个权重矩阵乘以输入图像的一个部分，产生相应的卷积输出。</strong></p>
+<p>比方说，对于一个 28×28 的图片而言，将一个 3×3 的滤波器与图片中 3×3 的矩阵依次相乘，从而得到相应的卷积输出。</p>
+<p>滤波器的尺寸通常比原始图片要小，与权重相似，在最小化成本的反向传播中，滤波器也会被更新。就像下面这张图片一样，通过一个过滤器，依次乘以图片中每个 3×3 的分块，从而产生卷积的结果。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscxbxcg9j30lc0jyq4g.jpg" alt="img"></p>
+<hr>
+<h2 id="18-卷积神经网络-CNN（Convolutional-Neural-Network）"><a href="#18-卷积神经网络-CNN（Convolutional-Neural-Network）" class="headerlink" title="18. 卷积神经网络 CNN（Convolutional Neural Network）"></a>18. 卷积神经网络 CNN（Convolutional Neural Network）</h2><p><strong>卷积神经网络通常用来处理图像数据</strong>，假设输入数据的形状为 28×28×3（28pixels × 28pixels × RGBValue），那么对于传统的神经网络来说就会有 2352（28×28×3）个变量。随着图像尺寸的增加，那么变量的数量就会急剧增加。</p>
+<p>通过对图片进行卷积，可以减少变量的数目（已在过滤器的概念中提及）。随着过滤器沿着图像上宽和高的两个方向滑动，就会产生一个相应的 2 维激活映射，最后再沿纵向将所有的激活映射堆叠在一起，就产生了最后的输出。</p>
+<p>可以参照下面这个示意图。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscxcv1fhj30ft05mglv.jpg" alt="img"></p>
+<hr>
+<h2 id="19-池化（Pooling）"><a href="#19-池化（Pooling）" class="headerlink" title="19. 池化（Pooling）"></a>19. 池化（Pooling）</h2><p><strong>为进一步减少变量的数目同时防止过拟合，一种常见的做法是在卷积层中引入池化层（Pooling Layer）。</strong></p>
+<p>最常用的池化层的操作是将原始图片中每个 4×4 分块取最大值形成一个新的矩阵，这叫做最大值池化（Max Pooling）。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscxed5e4j30l408ewf1.jpg" alt="img"></p>
+<p>也有人尝试诸如平均池化（Average Pooling）之类的方式，但在实际情况中最大化池化拥有更好的效果。</p>
+<hr>
+<h2 id="20-补白（Padding）"><a href="#20-补白（Padding）" class="headerlink" title="20. 补白（Padding）"></a>20. 补白（Padding）</h2><p><strong>补白（Padding）通常是指给图像的边缘增加额外的空白，从而使得卷积后输出的图像跟输入图像在尺寸上一致，这也被称作相同补白（Same Padding）。</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscxg8tpdj306p05tjre.jpg" alt="img"></p>
+<p>如应用过滤器，在相同补白的情况下，卷积后的图像大小等于实际图像的大小。</p>
+<p>有效补白（Valid Padding）指的是保持图片上每个真实的像素点，不增加空白，因此在经历卷积后数据的尺寸会不断变小。</p>
+<hr>
+<h2 id="21-数据增强（Data-Augmentation）"><a href="#21-数据增强（Data-Augmentation）" class="headerlink" title="21. 数据增强（Data Augmentation）"></a>21. 数据增强（Data Augmentation）</h2><p><strong>数据增强指的是从已有数据中创造出新的数据，通过增加训练量以期望能够提高预测的准确率。</strong></p>
+<p>比如，在数字识别中，我们遇到的数字 9 可能是倾斜或旋转的，因此如果将训练的图片进行适度的旋转，增大训练量，那么模型的准确性就可能会得到提高。</p>
+<p>通过「旋转」「照亮」的操作，训练数据的品质得到了提升，这种过程被称作数据增强。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscxmcatbj30ae04fjrb.jpg" alt="img"></p>
+<hr>
+<h2 id="fit-递归神经网络相关知识"><a href="#fit-递归神经网络相关知识" class="headerlink" title="[fit]递归神经网络相关知识"></a>[fit]递归神经网络相关知识</h2><hr>
+<h2 id="22-递归神经元（Recurrent-NeuralNetwork）"><a href="#22-递归神经元（Recurrent-NeuralNetwork）" class="headerlink" title="22. 递归神经元（Recurrent NeuralNetwork）"></a>22. 递归神经元（Recurrent NeuralNetwork）</h2><p><strong>对于递归神经元来说，经由它自己处理过的数据会变成自身下一次的输入，这个过程总共会进行 t 次。</strong></p>
+<p>如下图所示，将递归神经元展开就相当于 t 个不同的神经元串联起来，这种神经元的长处是能够产生一个更全面的输出结果。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscxt9qrbj30l2050t8v.jpg" alt="img"></p>
+<hr>
+<h2 id="23-递归神经网络（RNN-Recurrent-NeuralNetwork）"><a href="#23-递归神经网络（RNN-Recurrent-NeuralNetwork）" class="headerlink" title="23. 递归神经网络（RNN-Recurrent NeuralNetwork）"></a>23. 递归神经网络（RNN-Recurrent NeuralNetwork）</h2><p><strong>递归神经网络通常被用于处理序列化的数据，即前一项的输出是用来预测下一项的输入。</strong></p>
+<p>递归神经网络通常被用于处理序列化的数据，即前一项的输出是用来预测下一项的输入。递归神经网络中存在环的结构，这些神经元上的环状结构使得它们能够存储之前的数据一段时间，从而使得能够预测输出。</p>
+<p>与递归神经元相似，在 RNN 中隐含层的输出会作为下一次的输入，如此往复经历 t 次，再将输出的结果传递到下一层网络中。这样，最终输出的结果会更全面，而且之前训练的信息被保持的时间会更久。</p>
+<p>隐藏层将反向传递错误以更新权重。这被称为 backpropagation through time（BPTT）。</p>
+<hr>
+<h2 id="24-梯度消失问题"><a href="#24-梯度消失问题" class="headerlink" title="24. 梯度消失问题"></a>24. 梯度消失问题</h2><p><strong>当激活函数的梯度非常小时，会出现梯度消失问题。</strong>在反向传播过程中，权重因子会被多次乘以这些小的梯度, 因此会越变越小。随着递归的深入趋于「消失」，神经网络失去了长程可靠性。这在递归神经网络中是一个较普遍的问题，<strong>对于递归神经网络而言，长程可靠性尤为重要。</strong></p>
+<p>这一问题可通过采用 ReLu 等没有小梯度的激活函数来有效避免。</p>
+<hr>
+<h2 id="25-梯度爆炸问题"><a href="#25-梯度爆炸问题" class="headerlink" title="25. 梯度爆炸问题"></a>25. 梯度爆炸问题</h2><p><strong>梯度爆炸问题与梯度消失问题正好相反，梯度爆炸问题中，激活函数的梯度过大。</strong></p>
+<p>在反向传播过程中，部分节点的大梯度使得他们的权重变得非常大，从而削弱了其他节点对于结果的影响，这个问题可以通过截断（即设置一个梯度允许的最大值）的方式来有效避免。</p>
+<hr>
+<h2 id="电影推荐"><a href="#电影推荐" class="headerlink" title="电影推荐"></a>电影推荐</h2><p>框架：TensorFlow</p>
+<p>使用文本卷积神经网络，并使用<a target="_blank" rel="noopener" href="https://grouplens.org/datasets/movielens/"><code>MovieLens</code></a>数据集完成电影推荐的任务。</p>
+<p>代码还没有看懂，还在学习</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscxzf0uyj31ee0nugns.jpg" alt="img"></p>
+<hr>
+<h2 id="电影推荐-模型设计"><a href="#电影推荐-模型设计" class="headerlink" title="电影推荐-模型设计"></a>电影推荐-模型设计</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscy0d9ysj30sg0lcdji.jpg" alt="img"></p>
+<hr>
+<h2 id="电影推荐-文本卷积网络"><a href="#电影推荐-文本卷积网络" class="headerlink" title="电影推荐-文本卷积网络"></a>电影推荐-文本卷积网络</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscy3nty5j31hk0lmjuy.jpg" alt="img"></p>
+<p>图片来自Kim Yoon的论文：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1408.5882"><code>Convolutional Neural Networks for Sentence Classification</code></a></p>
+<hr>
+<h2 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h2><ol>
+<li>推荐<strong>同类</strong>型的电影 思路是计算当前看的电影特征向量与整个电影特征矩阵的余弦相似度，取相似度最大的top_k个，这里加了些随机选择在里面，保证每次的推荐稍稍有些不同。</li>
+<li>推荐<strong>您喜欢</strong>的电影 思路是使用用户特征向量与电影特征矩阵计算所有电影的评分，取评分最高的top_k个，同样加了些随机选择部分。</li>
+<li>看过这个电影的人<strong>还看了</strong>（喜欢）哪些电影<ul>
+<li>首先选出喜欢某个电影的top_k个人，得到这几个人的用户特征向量。</li>
+<li>然后计算这几个人对所有电影的评分</li>
+<li>选择每个人评分最高的电影作为推荐</li>
+<li>同样加入了随机选择</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="神经网络-对比"><a href="#神经网络-对比" class="headerlink" title="神经网络 对比"></a>神经网络 对比</h2><p>Keras 强调极简主义,你只需几行代码就能构建一个神经网络。 </p>
+<p>Caffe 的文档非常贫乏，但在计算机视觉领域里， Caffe是无可争议的领导者，它非常稳健，非常快速。</p>
+<p>PyTorch 中的 Tensor 和 Numpy 中的数组可以很方便地进行转换，便于用户的使用 。Caffe2 的代码将全部并入 PyTorch，这也给未来的 PyTorch 赋予了更大的潜力。</p>
+<p>DL4J 的文档写得非常好，里面的文件很清晰，有理论阐述，也有代码案例 。</p>
+<p>Cognitive Toolkit 似乎不是很流行。 </p>
+<p>DSSTNE框架只做一件事 一推荐系统，但它把这件事做到了极致。 DSSTNE 还不是一个足够 成熟的项目，而且它封装得太严密了 (black box)。</p>
+<hr>
+<h2 id="标签预测"><a href="#标签预测" class="headerlink" title="标签预测"></a>标签预测</h2><p>automated machine learning</p>
+<p>paper</p>
+
+    </div>
+  </section>
+
+  
+  
+</article>
+      <script>NProgress.set(0.6);</script>
+    </main>
+    
+    <footer class="footer">
+  <div class="footer-wrap">
+    <div class="footer-link">
+      
+      <h3>LINKS</h3>
+      <p>
+        
+          <a href="http://1x0.xyz/" target="_blank">Tian1x0</a>
+        
+          <a href="http://www.royalmice.com/hankzhou/" target="_blank">Hankzhou</a>
+        
+          <a href="http://sjydh.me/" target="_blank">设计有点货</a>
+        
+          <a href="https://developers.google.com/web/fundamentals/" target="_blank">Web fundamentals</a>
+        
+      </p>
+      
+    </div>
+    <div class="footer-tags">
+      
+        <h3>TAGS</h3>        
+        <div class="tags">
+             <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/FaceDetection/" rel="tag">FaceDetection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/Japan/" rel="tag">Japan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/arduino/" rel="tag">arduino</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/mathematic/" rel="tag">mathematic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/probability/" rel="tag">probability</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/travel/" rel="tag">travel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E5%88%B6%E4%BD%9C/" rel="tag">制作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E5%B9%B3%E8%A1%A1%E8%BD%A6/" rel="tag">平衡车</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" rel="tag">推荐系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%97%A0%E7%A2%B3%E5%B0%8F%E8%BD%A6/" rel="tag">无碳小车</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E9%99%80%E8%9E%BA%E4%BB%AA/" rel="tag">陀螺仪</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+          </div>
+      
+    </div>
+    <div class="footer-info">
+        <div>Theme <span class="codename"><a href="https://github.com/GGICE/hexo-icer" target="_blank">icer</a></span> designed & coded by <a href="https://ice.gs/" target="_blank">GGICE</a></div>
+        <div>Copyright &copy; 2020, <a href="/">JAZZ IT UP</a>  . All rights reserved .</div>
+      </div>
+  </div>
+</footer>
+
+
+    <script>NProgress.set(0.8);</script>
+    
+  </div>
+
+  <script src="//cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/blog-zh/js/main.js"></script>
+
+
+<!-- Commit -->
+
+
+
+  <script>
+    NProgress.done();
+  </script>
+  
+</body>
+</html>

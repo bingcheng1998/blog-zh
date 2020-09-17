@@ -2,195 +2,529 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>JAZZ IT UP</title>
+  <meta name="description" content="A geeker blog." />
+  <meta name="keywords" content="hexo,theme,icer,ggice" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="艺术 科技 生活">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JAZZ IT UP">
+<meta property="og:url" content="https://bingcheng.openmc.cn/">
+<meta property="og:site_name" content="JAZZ IT UP">
+<meta property="og:description" content="艺术 科技 生活">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="胡炳城 Bingcheng">
+<meta property="article:tag" content="blog, life, tech, art">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="image/hbc.ico">
+  
+
+  <link rel='stylesheet' href='//cdn.staticfile.org/nprogress/0.2.0/nprogress.css'/>
+  <link rel="stylesheet" href="//cdn.staticfile.org/highlight.js/9.15.10/styles/github-gist.min.css">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_405585_yuudmyqpo3q.css">
+  <script src='//cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js'></script>
+  <!-- <script>try{Typekit.load({ async: false });}catch(e){}</script> -->
+  
+<link rel="stylesheet" href="/blog-zh/style.css">
+
   
 
   
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
+
+<!-- baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?403460ed7637fb6c4a9e09a74e662ca0";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
   
-    <link rel="alternate" href="/blog-zh/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/blog-zh/css/style.css">
+<!-- End baidu Analytics -->
+
 
 <meta name="generator" content="Hexo 5.1.1"></head>
 
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/blog-zh/" id="logo">Hexo</a>
-      </h1>
+  
+  <script>NProgress.start();</script>
+  
+  <div id="site-wrapper">
+    
+    <header class="header">
+  <div class="header-wrapper">
+    <a href="/">
+      <img src="/image/logo.jpg" class="logo"/>
+      <!-- <span class="site-desc">
+        
+      </span> -->
+    </a>
+    <div class="social-wrapper">
       
+        
+          <a href="https://twitter.com/iggice" class="social twitter" target="_blank" rel="external">
+            <span class="iconfont icon-twitter"></span>
+          </a>
+          
+          <a href="https://github.com/ggice" class="social github" target="_blank" rel="external">
+            <span class="iconfont icon-github"></span>
+          </a>
+          
+          <a href="http://ggice.lofter.com/" class="social lofter" target="_blank" rel="external">
+            <span class="iconfont icon-lofter"></span>
+          </a>
+          
+          <a href="https://dribbble.com/ggice" class="social dribbble" target="_blank" rel="external">
+            <span class="iconfont icon-dribbble"></span>
+          </a>
+          
+          <a href="mailto:i@ice.gs" class="social email" target="_blank" rel="external">
+            <span class="iconfont icon-email"></span>
+          </a>
+          
+          <a href="/atom.xml" class="social rss" target="_blank" rel="external">
+            <span class="iconfont icon-rss"></span>
+          </a>
+          
+      
+      
+      <a href="#" class="social search-do" target="_blank" rel="external">
+        <span class="iconfont icon-search"></span>
+      </a>
+            
+      <!-- <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://bingcheng.openmc.cn"></form> -->
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/blog-zh/">Home</a>
-        
-          <a class="main-nav-link" href="/blog-zh/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/blog-zh/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+    <div class="search-wrap">
+      <div class="search-content animated fade-in">
+        <p class="search-input">
+          <span class="iconfont icon-search"></span>
+          <input tabindex="1">
+        </p>
+        <ul class="search-result">
+            
+              <div class="tags">
+                   <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/FaceDetection/" rel="tag">FaceDetection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/Japan/" rel="tag">Japan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/arduino/" rel="tag">arduino</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/mathematic/" rel="tag">mathematic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/probability/" rel="tag">probability</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/travel/" rel="tag">travel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E5%88%B6%E4%BD%9C/" rel="tag">制作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E5%B9%B3%E8%A1%A1%E8%BD%A6/" rel="tag">平衡车</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" rel="tag">推荐系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%97%A0%E7%A2%B3%E5%B0%8F%E8%BD%A6/" rel="tag">无碳小车</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E9%99%80%E8%9E%BA%E4%BB%AA/" rel="tag">陀螺仪</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+                </div>
+            
+        </ul>
       </div>
     </div>
+    <nav class="header-nav">
+      
+        <a href="/" class="archives">
+          home
+        </a>
+        
+        <a href="/tags/web-development/" class="archives">
+          web development
+        </a>
+        
+        <a href="/tags/soft/" class="archives">
+          soft
+        </a>
+        
+        <a href="/tags/os/" class="archives">
+          os
+        </a>
+        
+        <a href="/archives" class="archives">
+          archives
+        </a>
+        
+        <a href="/README/" class="archives">
+          README
+        </a>
+        
+    </nav>
   </div>
 </header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog-zh/2020/09/17/hello-world/" class="article-date">
-  <time datetime="2020-09-17T04:40:44.140Z" itemprop="datePublished">2020-09-17</time>
-</a>
+    <script>NProgress.set(0.4);</script>
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog-zh/2020/09/17/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
+    <main id="main" role="main">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
+<section class="post-list">
+	
+    <article class="post   animated fade-in-top">
+
+  <section class="post-header">
+    
+      <h2 class="title">
+        <a href="/blog-zh/undefined/zh-CN/hello-world.html">
+          Hello World
+        </a>
+      </h2>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/17/hello-world/" data-id="ckf6bu6zm0000oejhaqd9bg3d" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog-zh/archives/2020/09/">September 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/blog-zh/2020/09/17/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
+      <div class="subtitle">
+          <time>
+            9月 17, 2020
+          </time>
+          
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </section>
+  <section class="content">
+    Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex...
+
+    <div class="readmore">
+      <a href="/blog-zh/undefined/zh-CN/hello-world.html" class="iconfont icon-more">Read More</a>
     </div>
+
+  </section>
+</article>
+  
+    <article class="post   animated fade-in-top">
+
+  <section class="post-header">
+    
+      <h2 class="title">
+        <a href="/blog-zh/zh-CN/maker/%E9%9D%A2%E5%AD%94%E5%8F%98%E8%BF%81%E5%8A%A8%E7%94%BB%E5%88%B6%E4%BD%9C.html">
+          面孔变迁动画制作
+        </a>
+      </h2>
+      
+      <div class="subtitle">
+          <time>
+            4月 28, 2020
+          </time>
+          
+            <span class="tags">
+                 <span class="iconfont icon-tag"></span>
+                 <a class="tag-none-link" href="/blog-zh/tags/AI/" rel="tag">AI</a> / <a class="tag-none-link" href="/blog-zh/tags/FaceDetection/" rel="tag">FaceDetection</a>
+              </span>
+          
+      </div>
+  </section>
+  <section class="content">
+    简介昨日看见卿工发出的一篇文章“动态展示孩子的相貌变化”，感觉很有意思。遂到github上面拉下来代码试了试。本文是一片教程，附带一些避免坑的注意事项。
+
+项目地址：https://github.com/andrewdcampbell/fa...
+
+    <div class="readmore">
+      <a href="/blog-zh/zh-CN/maker/%E9%9D%A2%E5%AD%94%E5%8F%98%E8%BF%81%E5%8A%A8%E7%94%BB%E5%88%B6%E4%BD%9C.html" class="iconfont icon-more">Read More</a>
+    </div>
+
+  </section>
+</article>
+  
+    <article class="post   animated fade-in-top">
+
+  <section class="post-header">
+    
+      <h2 class="title">
+        <a href="/blog-zh/zh-CN/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%89%93%E6%A0%87%E7%AD%BE%E6%BC%94%E5%8C%96%E7%9A%84flow%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8B.html">
+          深度学习打标签演化的Flow推荐模型
+        </a>
+      </h2>
+      
+      <div class="subtitle">
+          <time>
+            6月 14, 2019
+          </time>
+          
+            <span class="tags">
+                 <span class="iconfont icon-tag"></span>
+                 <a class="tag-none-link" href="/blog-zh/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" rel="tag">推荐系统</a> / <a class="tag-none-link" href="/blog-zh/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a> / <a class="tag-none-link" href="/blog-zh/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a>
+              </span>
+          
+      </div>
+  </section>
+  <section class="content">
+    
+基于OpenML框架的flow推荐
+
+各种不同任务的深度学习标签的例子音乐: Pytorch implementation of “Sample-level Deep Convolutional Neural Networks for M...
+
+    <div class="readmore">
+      <a href="/blog-zh/zh-CN/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%89%93%E6%A0%87%E7%AD%BE%E6%BC%94%E5%8C%96%E7%9A%84flow%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8B.html" class="iconfont icon-more">Read More</a>
+    </div>
+
+  </section>
+</article>
+  
+    <article class="post   animated fade-in-top">
+
+  <section class="post-header">
+    
+      <h2 class="title">
+        <a href="/blog-zh/zh-CN/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">
+          基于深度学习的推荐系统
+        </a>
+      </h2>
+      
+      <div class="subtitle">
+          <time>
+            6月 6, 2019
+          </time>
+          
+            <span class="tags">
+                 <span class="iconfont icon-tag"></span>
+                 <a class="tag-none-link" href="/blog-zh/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" rel="tag">推荐系统</a> / <a class="tag-none-link" href="/blog-zh/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a> / <a class="tag-none-link" href="/blog-zh/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a>
+              </span>
+          
+      </div>
+  </section>
+  <section class="content">
+    Deep Learning based Recommender System
+本文的概念主要内容来自：arXiv:1707.07435v6
+
+一个电影推荐系统（基于tensorflow）示例的运行。
+一个文本深度学习的电影推荐系统，包含看过...
+
+    <div class="readmore">
+      <a href="/blog-zh/zh-CN/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html" class="iconfont icon-more">Read More</a>
+    </div>
+
+  </section>
+</article>
+  
+    <article class="post   animated fade-in-top">
+
+  <section class="post-header">
+    
+      <h2 class="title">
+        <a href="/blog-zh/zh-CN/mathematic/%E4%BA%8C%E5%AD%A9%E9%97%AE%E9%A2%98%E2%80%94%E2%80%94Tuesday-changes-every-thing.html">
+          二孩问题——Tuesday Changes Every Thing
+        </a>
+      </h2>
+      
+      <div class="subtitle">
+          <time>
+            5月 19, 2019
+          </time>
+          
+            <span class="tags">
+                 <span class="iconfont icon-tag"></span>
+                 <a class="tag-none-link" href="/blog-zh/tags/mathematic/" rel="tag">mathematic</a> / <a class="tag-none-link" href="/blog-zh/tags/probability/" rel="tag">probability</a> / <a class="tag-none-link" href="/blog-zh/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a>
+              </span>
+          
+      </div>
+  </section>
+  <section class="content">
+    题目：
+If, say, it is known that one of the children is a male born on a Tuesday, what is the probability of the other chil...
+
+    <div class="readmore">
+      <a href="/blog-zh/zh-CN/mathematic/%E4%BA%8C%E5%AD%A9%E9%97%AE%E9%A2%98%E2%80%94%E2%80%94Tuesday-changes-every-thing.html" class="iconfont icon-more">Read More</a>
+    </div>
+
+  </section>
+</article>
+  
+    <article class="post   animated fade-in-top">
+
+  <section class="post-header">
+    
+      <h2 class="title">
+        <a href="/blog-zh/zh-CN/%E5%88%B6%E4%BD%9C/%E6%97%A0%E7%A2%B3%E5%B0%8F%E8%BD%A6.html">
+          无碳小车
+        </a>
+      </h2>
+      
+      <div class="subtitle">
+          <time>
+            10月 25, 2018
+          </time>
+          
+            <span class="tags">
+                 <span class="iconfont icon-tag"></span>
+                 <a class="tag-none-link" href="/blog-zh/tags/%E5%88%B6%E4%BD%9C/" rel="tag">制作</a> / <a class="tag-none-link" href="/blog-zh/tags/%E6%97%A0%E7%A2%B3%E5%B0%8F%E8%BD%A6/" rel="tag">无碳小车</a>
+              </span>
+          
+      </div>
+  </section>
+  <section class="content">
+    上海交通大学工程训练综合能力竞赛命题——重力势能驱动的S型无碳小车 
+
+竞赛指导思想对接“全国大学生工程训练综合能力竞赛”，以“重在实践，鼓励创新”为指导思想，旨在加强大学生工程实践能力、创新意识和合作精神的培养，激发大学生进行科学研究与探...
+
+    <div class="readmore">
+      <a href="/blog-zh/zh-CN/%E5%88%B6%E4%BD%9C/%E6%97%A0%E7%A2%B3%E5%B0%8F%E8%BD%A6.html" class="iconfont icon-more">Read More</a>
+    </div>
+
+  </section>
+</article>
+  
+    <article class="post   animated fade-in-top">
+
+  <section class="post-header">
+    
+      <h2 class="title">
+        <a href="/blog-zh/zh-CN/%E5%88%B6%E4%BD%9C/%E5%B9%B3%E8%A1%A1%E6%9C%BA%E5%99%A8%E4%BA%BA-%E5%B9%B3%E8%A1%A1%E8%BD%A6.html">
+          平衡机器人-平衡车
+        </a>
+      </h2>
+      
+      <div class="subtitle">
+          <time>
+            8月 12, 2018
+          </time>
+          
+            <span class="tags">
+                 <span class="iconfont icon-tag"></span>
+                 <a class="tag-none-link" href="/blog-zh/tags/arduino/" rel="tag">arduino</a> / <a class="tag-none-link" href="/blog-zh/tags/%E5%88%B6%E4%BD%9C/" rel="tag">制作</a> / <a class="tag-none-link" href="/blog-zh/tags/%E5%B9%B3%E8%A1%A1%E8%BD%A6/" rel="tag">平衡车</a> / <a class="tag-none-link" href="/blog-zh/tags/%E9%99%80%E8%9E%BA%E4%BB%AA/" rel="tag">陀螺仪</a>
+              </span>
+          
+      </div>
+  </section>
+  <section class="content">
+    材料准备：所用芯片如下图所示：
+
+制作过程：马达连接：将两个减速电机用热熔胶粘在一起，如下图所示。箭头所指为热熔胶。
+
+将减速电机装上轮胎与固定件：
+
+将马达连在亚克力板上：
+
+在这层以上再装一层。注意将六轴陀螺仪6050装在六角铜柱与第二...
+
+    <div class="readmore">
+      <a href="/blog-zh/zh-CN/%E5%88%B6%E4%BD%9C/%E5%B9%B3%E8%A1%A1%E6%9C%BA%E5%99%A8%E4%BA%BA-%E5%B9%B3%E8%A1%A1%E8%BD%A6.html" class="iconfont icon-more">Read More</a>
+    </div>
+
+  </section>
+</article>
+  
+    <article class="post   animated fade-in-top">
+
+  <section class="post-header">
+    
+      <h2 class="title">
+        <a href="/blog-zh/zh-CN/travel/%E6%97%A5%E6%9C%AC%E6%B8%B8%E5%AD%A6%E8%AE%B0%E4%BA%8B.html">
+          日本游学记事
+        </a>
+      </h2>
+      
+      <div class="subtitle">
+          <time>
+            7月 31, 2018
+          </time>
+          
+            <span class="tags">
+                 <span class="iconfont icon-tag"></span>
+                 <a class="tag-none-link" href="/blog-zh/tags/Japan/" rel="tag">Japan</a> / <a class="tag-none-link" href="/blog-zh/tags/travel/" rel="tag">travel</a>
+              </span>
+          
+      </div>
+  </section>
+  <section class="content">
+    日本🇯🇵日本大学2018年一月的寒假，到日本游学。日本的大学都很小，上智大学更是只有三栋教学楼，早稻田大学稍微大一些。早稻田大学作为日本人才基地，是十分漂亮的。
+
+
+
+
+游学游学一事，游在前，自然看遍日本山河。日本国土面积不大，注定了景...
+
+    <div class="readmore">
+      <a href="/blog-zh/zh-CN/travel/%E6%97%A5%E6%9C%AC%E6%B8%B8%E5%AD%A6%E8%AE%B0%E4%BA%8B.html" class="iconfont icon-more">Read More</a>
+    </div>
+
+  </section>
+</article>
+  
+    <article class="post   animated fade-in-top">
+
+  <section class="post-header">
+    
+      <h2 class="title">
+        <a href="/blog-zh/zh-CN/%E8%AF%97%E6%AD%8C/%E5%8F%B9%E6%99%9A%E8%87%AA%E4%B9%A0.html">
+          叹晚自习
+        </a>
+      </h2>
+      
+      <div class="subtitle">
+          <time>
+            3月 3, 2016
+          </time>
+          
+            <span class="tags">
+                 <span class="iconfont icon-tag"></span>
+                 <a class="tag-none-link" href="/blog-zh/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a> / <a class="tag-none-link" href="/blog-zh/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a>
+              </span>
+          
+      </div>
+  </section>
+  <section class="content">
+    荧光条条明如昼，白光漫漫洒窗牖。细针落地犹可闻，红日一去万音休。千百头颅伏案上，不屈脊梁在此佝。此般姿态何使得？但愿他日拔头筹！
+
+——谨以此诗纪念一去不回的高中生活！纪念那热血的奋斗、那纯洁的感情和那永远写不完的模拟！
+——还记得那时候停...
+
+    <div class="readmore">
+      <a href="/blog-zh/zh-CN/%E8%AF%97%E6%AD%8C/%E5%8F%B9%E6%99%9A%E8%87%AA%E4%B9%A0.html" class="iconfont icon-more">Read More</a>
+    </div>
+
+  </section>
+</article>
+  
+</section>
+
+
+      <script>NProgress.set(0.6);</script>
+    </main>
+    
+    <footer class="footer">
+  <div class="footer-wrap">
+    <div class="footer-link">
+      
+      <h3>LINKS</h3>
+      <p>
+        
+          <a href="http://1x0.xyz/" target="_blank">Tian1x0</a>
+        
+          <a href="http://www.royalmice.com/hankzhou/" target="_blank">Hankzhou</a>
+        
+          <a href="http://sjydh.me/" target="_blank">设计有点货</a>
+        
+          <a href="https://developers.google.com/web/fundamentals/" target="_blank">Web fundamentals</a>
+        
+      </p>
+      
+    </div>
+    <div class="footer-tags">
+      
+        <h3>TAGS</h3>        
+        <div class="tags">
+             <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/FaceDetection/" rel="tag">FaceDetection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/Japan/" rel="tag">Japan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/arduino/" rel="tag">arduino</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/mathematic/" rel="tag">mathematic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/probability/" rel="tag">probability</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/travel/" rel="tag">travel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E5%88%B6%E4%BD%9C/" rel="tag">制作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E5%B9%B3%E8%A1%A1%E8%BD%A6/" rel="tag">平衡车</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" rel="tag">推荐系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%97%A0%E7%A2%B3%E5%B0%8F%E8%BD%A6/" rel="tag">无碳小车</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E9%99%80%E8%9E%BA%E4%BB%AA/" rel="tag">陀螺仪</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog-zh/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+          </div>
+      
+    </div>
+    <div class="footer-info">
+        <div>Theme <span class="codename"><a href="https://github.com/GGICE/hexo-icer" target="_blank">icer</a></span> designed & coded by <a href="https://ice.gs/" target="_blank">GGICE</a></div>
+        <div>Copyright &copy; 2020, <a href="/">JAZZ IT UP</a>  . All rights reserved .</div>
+      </div>
   </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/blog-zh/" class="mobile-nav-link">Home</a>
-  
-    <a href="/blog-zh/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+
+
+    <script>NProgress.set(0.8);</script>
     
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/blog-zh/fancybox/jquery.fancybox.css">
-
-  
-<script src="/blog-zh/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/blog-zh/js/script.js"></script>
-
-
-
-
   </div>
+
+  <script src="//cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/blog-zh/js/main.js"></script>
+
+
+<!-- Commit -->
+
+
+
+  <script>
+    NProgress.done();
+  </script>
+  
 </body>
 </html>
