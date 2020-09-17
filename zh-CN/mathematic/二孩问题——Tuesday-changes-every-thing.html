@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   <title>二孩问题——Tuesday Changes Every Thing | JAZZ IT UP</title>
@@ -10,16 +10,16 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目： If, say, it is known that one of the children is a male born on a Tuesday, what is the probability of the other child to be also male?  分析：什么鬼？周一到周日，每天都可以出生，还会影响孩子另一个孩子性别？ 是的。 The sample space S &#x3D;">
+  <meta name="description" content="题目：  If, say, it is known that one of the children is a male born on a Tuesday, what is the probability of the other child to be also male?  分析： 什么鬼？周一到周日，每天都可以出生，还会影响孩子另一个孩子性别？ 是的。 The sample space S">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二孩问题——Tuesday Changes Every Thing">
 <meta property="og:url" content="https://bingcheng.openmc.cn/zh-CN/mathematic/%E4%BA%8C%E5%AD%A9%E9%97%AE%E9%A2%98%E2%80%94%E2%80%94Tuesday-changes-every-thing.html">
 <meta property="og:site_name" content="JAZZ IT UP">
-<meta property="og:description" content="题目： If, say, it is known that one of the children is a male born on a Tuesday, what is the probability of the other child to be also male?  分析：什么鬼？周一到周日，每天都可以出生，还会影响孩子另一个孩子性别？ 是的。 The sample space S &#x3D;">
+<meta property="og:description" content="题目：  If, say, it is known that one of the children is a male born on a Tuesday, what is the probability of the other child to be also male?  分析： 什么鬼？周一到周日，每天都可以出生，还会影响孩子另一个孩子性别？ 是的。 The sample space S">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmwh9fjg3076076q2q.gif">
 <meta property="article:published_time" content="2019-05-19T12:07:29.000Z">
-<meta property="article:modified_time" content="2020-09-16T04:03:14.002Z">
+<meta property="article:modified_time" content="2020-09-17T08:22:28.038Z">
 <meta property="article:author" content="胡炳城 Bingcheng">
 <meta property="article:tag" content="mathematic">
 <meta property="article:tag" content="概率论">
@@ -44,11 +44,15 @@
   
 
 
-<meta name="generator" content="Hexo 5.1.1"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.1.1"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
   
-  <script>NProgress.start();</script>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><script>NProgress.start();</script>
   
   <div id="site-wrapper">
     
@@ -139,37 +143,103 @@
   </section>
   <section class="content">
     <div class="article-entry" itemprop="articleBody">
-      <h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><blockquote>
+      <h2 id="题目">题目：</h2>
+<blockquote>
 <p>If, say, it is known that one of the children is a male born on a Tuesday, what is the probability of the other <em>child</em> to be also male?</p>
 </blockquote>
-<h2 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h2><p>什么鬼？周一到周日，每天都可以出生，还会影响孩子另一个孩子性别？</p>
+<h2 id="分析">分析：</h2>
+<p>什么鬼？周一到周日，每天都可以出生，还会影响孩子另一个孩子性别？</p>
 <p>是的。</p>
-<p>The sample space S = {ff, fm, mf, mm}, with f and m standing for “female: and “male”, respectively. </p>
-<p>Denote these <a target="_blank" rel="noopener" href="https://www.cut-the-knot.org/Probability/Dictionary.shtml#elementary">elementary events</a> in sequence A1, A2, A3, A4. </p>
+<p>The sample space S = {ff, fm, mf, mm}, with f and m standing for "female: and "male", respectively.</p>
+<p>Denote these <a target="_blank" rel="noopener" href="https://www.cut-the-knot.org/Probability/Dictionary.shtml#elementary">elementary events</a> in sequence A1, A2, A3, A4.</p>
 <p>他们的概率分别是 1/4, 1/4, 1/4, 1/4; P(Aj) = 1/4, j = 1, 2, 3, 4.</p>
 <p>B 是男孩出生在周二的概率.</p>
-<p>P(B|A1) = 0, 因为A1里面没有男孩. </p>
-<p>P(B|A2) = P(B|A3) = 1/7, because in the two cases the one male bear has the probability 1/7 to have been born on any specific day, Tuesday in particular. </p>
+<p>P(B|A1) = 0, 因为A1里面没有男孩.</p>
+<p>P(B|A2) = P(B|A3) = 1/7, because in the two cases the one male bear has the probability 1/7 to have been born on any specific day, Tuesday in particular.</p>
 <p>The most interesting case is A4. The following table is suggestive:</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmwh9fjg3076076q2q.gif" alt="two bears birthdays"></p>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmwh9fjg3076076q2q.gif" alt="two bears birthdays" /><figcaption aria-hidden="true">two bears birthdays</figcaption>
+</figure>
 <p>由图可知， P(B|A4) = 13/49.</p>
-<p>P(A1|B), P(A2|B), P(A3|B), P(A4|B) 的概率分别是 0, 1/7, 1/7, 13/49，且应该被重新调节，已达到和为1. </p>
+<p>P(A1|B), P(A2|B), P(A3|B), P(A4|B) 的概率分别是 0, 1/7, 1/7, 13/49，且应该被重新调节，已达到和为1.</p>
 <p>按比例放大，得到P(A1|B) = 0, P(A2|B) = P(A3|B) = 1/7 ÷ 27/49 = 7/27,P(A4|B) = 13/49 ÷ 27/49 = 13/27.</p>
-<p>所以周二出生的男孩的同胞为女性的概率为$ \frac{7}{27} \times 2 = \frac{14}{27}$.</p>
+<p>所以周二出生的男孩的同胞为女性的概率为$   = $.</p>
 <blockquote>
 <p>因此火神作业将一周7天改为一年12个月，答案应该为：</p>
-<p>$$\frac{\frac{1}{12}\times2}{(\frac{12\times2-1}{12\times12})+\frac{1}{12}\times2} = \frac{24}{47} = 0.5106$$</p>
+<p><span class="math display">\[\frac{\frac{1}{12}\times2}{(\frac{12\times2-1}{12\times12})+\frac{1}{12}\times2} = \frac{24}{47} = 0.5106\]</span></p>
 </blockquote>
-<h2 id="代码验证："><a href="#代码验证：" class="headerlink" title="代码验证："></a>代码验证：</h2><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python2</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randrange</span><br><span class="line"></span><br><span class="line">results = &#123;</span><br><span class="line"><span class="string">&quot;one_boy_born_tuesday&quot;</span>:&#123;<span class="string">&quot;B&quot;</span>: <span class="number">0</span>, <span class="string">&quot;G&quot;</span>: <span class="number">0</span>&#125;, <span class="string">&quot;one_boy&quot;</span>:&#123;<span class="string">&quot;B&quot;</span>: <span class="number">0</span>, <span class="string">&quot;G&quot;</span>: <span class="number">0</span>&#125;, <span class="string">&quot;first_is_boy&quot;</span>:&#123;<span class="string">&quot;B&quot;</span>: <span class="number">0</span>, <span class="string">&quot;G&quot;</span>: <span class="number">0</span>&#125;, <span class="string">&quot;first_is_boy_born_tuesday&quot;</span>:&#123;<span class="string">&quot;B&quot;</span>: <span class="number">0</span>, <span class="string">&quot;G&quot;</span>: <span class="number">0</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">10000000</span>):</span><br><span class="line">    house = []</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">        sex = <span class="string">&quot;B&quot;</span> <span class="keyword">if</span> randrange(<span class="number">2</span>) == <span class="number">0</span> <span class="keyword">else</span> <span class="string">&quot;G&quot;</span></span><br><span class="line">        day = randrange(<span class="number">7</span>)</span><br><span class="line">        house.append(&#123;<span class="string">&quot;sex&quot;</span>:sex, <span class="string">&quot;day&quot;</span>:day&#125;)</span><br><span class="line"></span><br><span class="line">    exp = <span class="string">&quot;one_boy_born_tuesday&quot;</span></span><br><span class="line">    <span class="keyword">if</span> (house[<span class="number">0</span>][<span class="string">&quot;sex&quot;</span>] == <span class="string">&quot;B&quot;</span> <span class="keyword">and</span> house[<span class="number">0</span>][<span class="string">&quot;day&quot;</span>] == <span class="number">3</span>):</span><br><span class="line">        results[exp][house[<span class="number">1</span>][<span class="string">&quot;sex&quot;</span>]] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> (house[<span class="number">1</span>][<span class="string">&quot;sex&quot;</span>] == <span class="string">&quot;B&quot;</span> <span class="keyword">and</span> house[<span class="number">1</span>][<span class="string">&quot;day&quot;</span>] == <span class="number">3</span>):</span><br><span class="line">        results[exp][house[<span class="number">0</span>][<span class="string">&quot;sex&quot;</span>]] += <span class="number">1</span>   </span><br><span class="line"></span><br><span class="line">    exp = <span class="string">&quot;one_boy&quot;</span></span><br><span class="line">    <span class="keyword">if</span> (house[<span class="number">0</span>][<span class="string">&quot;sex&quot;</span>] == <span class="string">&quot;B&quot;</span>):</span><br><span class="line">        results[exp][house[<span class="number">1</span>][<span class="string">&quot;sex&quot;</span>]] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> (house[<span class="number">1</span>][<span class="string">&quot;sex&quot;</span>] == <span class="string">&quot;B&quot;</span>):</span><br><span class="line">        results[exp][house[<span class="number">0</span>][<span class="string">&quot;sex&quot;</span>]] += <span class="number">1</span>   </span><br><span class="line"></span><br><span class="line">    exp = <span class="string">&quot;first_is_boy&quot;</span></span><br><span class="line">    <span class="keyword">if</span> (house[<span class="number">0</span>][<span class="string">&quot;sex&quot;</span>] == <span class="string">&quot;B&quot;</span>):</span><br><span class="line">        results[exp][house[<span class="number">1</span>][<span class="string">&quot;sex&quot;</span>]] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    exp = <span class="string">&quot;first_is_boy_born_tuesday&quot;</span></span><br><span class="line">    <span class="keyword">if</span> (house[<span class="number">0</span>][<span class="string">&quot;sex&quot;</span>] == <span class="string">&quot;B&quot;</span> <span class="keyword">and</span> house[<span class="number">0</span>][<span class="string">&quot;day&quot;</span>] == <span class="number">3</span>):</span><br><span class="line">        results[exp][house[<span class="number">1</span>][<span class="string">&quot;sex&quot;</span>]] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> results.items():</span><br><span class="line">    <span class="keyword">print</span> </span><br><span class="line">    <span class="keyword">print</span> <span class="string">&quot;-&quot;</span>*<span class="number">60</span></span><br><span class="line">    <span class="keyword">print</span> k</span><br><span class="line">    <span class="keyword">print</span> v</span><br><span class="line">    <span class="keyword">print</span> <span class="number">1.0</span>*v[<span class="string">&quot;B&quot;</span>]/(v[<span class="string">&quot;G&quot;</span>]+v[<span class="string">&quot;B&quot;</span>])</span><br></pre></td></tr></table></figure>
+<h2 id="代码验证">代码验证：</h2>
+<h3 id="代码">代码：</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#!/usr/bin/env python2</span>
+<span class="token comment"># -*- coding: utf-8 -*-</span>
 
+<span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
+
+results <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+<span class="token string">"one_boy_born_tuesday"</span><span class="token punctuation">:</span><span class="token punctuation">&#123;</span><span class="token string">"B"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">"G"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token string">"one_boy"</span><span class="token punctuation">:</span><span class="token punctuation">&#123;</span><span class="token string">"B"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">"G"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token string">"first_is_boy"</span><span class="token punctuation">:</span><span class="token punctuation">&#123;</span><span class="token string">"B"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">"G"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token string">"first_is_boy_born_tuesday"</span><span class="token punctuation">:</span><span class="token punctuation">&#123;</span><span class="token string">"B"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">"G"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">xrange</span><span class="token punctuation">(</span><span class="token number">10000000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    house <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        sex <span class="token operator">=</span> <span class="token string">"B"</span> <span class="token keyword">if</span> randrange<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token keyword">else</span> <span class="token string">"G"</span>
+        day <span class="token operator">=</span> randrange<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span>
+        house<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"sex"</span><span class="token punctuation">:</span>sex<span class="token punctuation">,</span> <span class="token string">"day"</span><span class="token punctuation">:</span>day<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+    exp <span class="token operator">=</span> <span class="token string">"one_boy_born_tuesday"</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>house<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"sex"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"B"</span> <span class="token keyword">and</span> house<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"day"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        results<span class="token punctuation">[</span>exp<span class="token punctuation">]</span><span class="token punctuation">[</span>house<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"sex"</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">elif</span> <span class="token punctuation">(</span>house<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"sex"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"B"</span> <span class="token keyword">and</span> house<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"day"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        results<span class="token punctuation">[</span>exp<span class="token punctuation">]</span><span class="token punctuation">[</span>house<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"sex"</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>   
+
+    exp <span class="token operator">=</span> <span class="token string">"one_boy"</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>house<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"sex"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"B"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        results<span class="token punctuation">[</span>exp<span class="token punctuation">]</span><span class="token punctuation">[</span>house<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"sex"</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">elif</span> <span class="token punctuation">(</span>house<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"sex"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"B"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        results<span class="token punctuation">[</span>exp<span class="token punctuation">]</span><span class="token punctuation">[</span>house<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"sex"</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>   
+
+    exp <span class="token operator">=</span> <span class="token string">"first_is_boy"</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>house<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"sex"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"B"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        results<span class="token punctuation">[</span>exp<span class="token punctuation">]</span><span class="token punctuation">[</span>house<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"sex"</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+
+    exp <span class="token operator">=</span> <span class="token string">"first_is_boy_born_tuesday"</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>house<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"sex"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"B"</span> <span class="token keyword">and</span> house<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"day"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        results<span class="token punctuation">[</span>exp<span class="token punctuation">]</span><span class="token punctuation">[</span>house<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"sex"</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+
+<span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> results<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span> 
+    <span class="token keyword">print</span> <span class="token string">"-"</span><span class="token operator">*</span><span class="token number">60</span>
+    <span class="token keyword">print</span> k
+    <span class="token keyword">print</span> v
+    <span class="token keyword">print</span> <span class="token number">1.0</span><span class="token operator">*</span>v<span class="token punctuation">[</span><span class="token string">"B"</span><span class="token punctuation">]</span><span class="token operator">/</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span><span class="token string">"G"</span><span class="token punctuation">]</span><span class="token operator">+</span>v<span class="token punctuation">[</span><span class="token string">"B"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>对千万个孩子进行分析，结果应该很精准了！</p>
-<h3 id="运行结果："><a href="#运行结果：" class="headerlink" title="运行结果："></a>运行结果：</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">------------------------------------------------------------</span><br><span class="line">one_boy</span><br><span class="line">&#123;&#x27;B&#x27;: 2498175, &#x27;G&#x27;: 5000766&#125;</span><br><span class="line"><span class="number">0.33313703895</span></span><br><span class="line"></span><br><span class="line">------------------------------------------------------------</span><br><span class="line">first_is_boy_born_tuesday</span><br><span class="line">&#123;&#x27;B&#x27;: 356077, &#x27;G&#x27;: 357227&#125;</span><br><span class="line"><span class="number">0.499193892085</span></span><br><span class="line"></span><br><span class="line">------------------------------------------------------------</span><br><span class="line">first_is_boy</span><br><span class="line">&#123;&#x27;B&#x27;: 2498175, &#x27;G&#x27;: 2500593&#125;</span><br><span class="line"><span class="number">0.499758140406</span></span><br><span class="line"></span><br><span class="line">------------------------------------------------------------</span><br><span class="line">one_boy_born_tuesday</span><br><span class="line">&#123;&#x27;B&#x27;: 661673, &#x27;G&#x27;: 714128&#125;</span><br><span class="line"><span class="number">0.480936559866</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="运行结果">运行结果：</h3>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">------------------------------------------------------------
+one_boy
+<span class="token punctuation">&#123;</span>'B'<span class="token operator">:</span> <span class="token number">2498175</span><span class="token punctuation">,</span> 'G'<span class="token operator">:</span> <span class="token number">5000766</span><span class="token punctuation">&#125;</span>
+<span class="token number">0.33313703895</span>
 
+------------------------------------------------------------
+first_is_boy_born_tuesday
+<span class="token punctuation">&#123;</span>'B'<span class="token operator">:</span> <span class="token number">356077</span><span class="token punctuation">,</span> 'G'<span class="token operator">:</span> <span class="token number">357227</span><span class="token punctuation">&#125;</span>
+<span class="token number">0.499193892085</span>
+
+------------------------------------------------------------
+first_is_boy
+<span class="token punctuation">&#123;</span>'B'<span class="token operator">:</span> <span class="token number">2498175</span><span class="token punctuation">,</span> 'G'<span class="token operator">:</span> <span class="token number">2500593</span><span class="token punctuation">&#125;</span>
+<span class="token number">0.499758140406</span>
+
+------------------------------------------------------------
+one_boy_born_tuesday
+<span class="token punctuation">&#123;</span>'B'<span class="token operator">:</span> <span class="token number">661673</span><span class="token punctuation">,</span> 'G'<span class="token operator">:</span> <span class="token number">714128</span><span class="token punctuation">&#125;</span>
+<span class="token number">0.480936559866</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>完美！</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><ol>
-<li><a target="_blank" rel="noopener" href="http://www.cut-the-knot.org/Probability/BearBornOnTuesday.shtml">http://www.cut-the-knot.org/Probability/BearBornOnTuesday.shtml</a></li>
-<li><a target="_blank" rel="noopener" href="https://math.stackexchange.com/questions/2769616/two-child-probability-paradox-a-nuanced-explanation">https://math.stackexchange.com/questions/2769616/two-child-probability-paradox-a-nuanced-explanation</a></li>
-<li><a target="_blank" rel="noopener" href="https://maths.ucd.ie/~plynch/Publications/BIMS-TwoChildParadox.pdf">https://maths.ucd.ie/~plynch/Publications/BIMS-TwoChildParadox.pdf</a></li>
+<h2 id="reference">Reference:</h2>
+<ol type="1">
+<li>http://www.cut-the-knot.org/Probability/BearBornOnTuesday.shtml</li>
+<li>https://math.stackexchange.com/questions/2769616/two-child-probability-paradox-a-nuanced-explanation</li>
+<li>https://maths.ucd.ie/~plynch/Publications/BIMS-TwoChildParadox.pdf</li>
 </ol>
 
     </div>
@@ -227,7 +297,7 @@
 
   <script>
     NProgress.done();
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 </body>
 </html>
