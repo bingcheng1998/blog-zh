@@ -10,12 +10,12 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目：  If, say, it is known that one of the children is a male born on a Tuesday, what is the probability of the other child to be also male?   分析： 什么鬼？周一到周日，每天都可以出生，还会影响孩子另一个孩子性别？ 是的。 The sample space">
+  <meta name="description" content="题目：  If, say, it is known that one of the children is a male born on a Tuesday, what is the probability of the other child to be also male?  分析： 什么鬼？周一到周日，每天都可以出生，还会影响孩子另一个孩子性别？ 是的。 The sample space S">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二孩问题——Tuesday Changes Every Thing">
-<meta property="og:url" content="https://bingcheng.openmc.cn/zh-CN/mathematic/%E4%BA%8C%E5%AD%A9%E9%97%AE%E9%A2%98%E2%80%94%E2%80%94Tuesday-changes-every-thing.html">
+<meta property="og:url" content="https://bingcheng.openmc.cn/blog-zh/zh-CN/mathematic/%E4%BA%8C%E5%AD%A9%E9%97%AE%E9%A2%98%E2%80%94%E2%80%94Tuesday-changes-every-thing.html">
 <meta property="og:site_name" content="JAZZ IT UP">
-<meta property="og:description" content="题目：  If, say, it is known that one of the children is a male born on a Tuesday, what is the probability of the other child to be also male?   分析： 什么鬼？周一到周日，每天都可以出生，还会影响孩子另一个孩子性别？ 是的。 The sample space">
+<meta property="og:description" content="题目：  If, say, it is known that one of the children is a male born on a Tuesday, what is the probability of the other child to be also male?  分析： 什么鬼？周一到周日，每天都可以出生，还会影响孩子另一个孩子性别？ 是的。 The sample space S">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmwh9fjg3076076q2q.gif">
 <meta property="article:published_time" content="2019-05-19T12:07:29.000Z">
@@ -71,7 +71,7 @@
         <span class="iconfont icon-search"></span>
       </a>
             
-      <!-- <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://bingcheng.openmc.cn"></form> -->
+      <!-- <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://bingcheng.openmc.cn/blog-zh"></form> -->
     </div>
     <div class="search-wrap">
       <div class="search-content animated fade-in">
@@ -143,32 +143,33 @@
   </section>
   <section class="content">
     <div class="article-entry" itemprop="articleBody">
-      <h2 id="题目"><a class="markdownIt-Anchor" href="#题目"></a> 题目：</h2>
+      <h2 id="题目">题目：</h2>
 <blockquote>
 <p>If, say, it is known that one of the children is a male born on a Tuesday, what is the probability of the other <em>child</em> to be also male?</p>
 </blockquote>
-<h2 id="分析"><a class="markdownIt-Anchor" href="#分析"></a> 分析：</h2>
+<h2 id="分析">分析：</h2>
 <p>什么鬼？周一到周日，每天都可以出生，还会影响孩子另一个孩子性别？</p>
 <p>是的。</p>
-<p>The sample space S = {ff, fm, mf, mm}, with f and m standing for &quot;female: and “male”, respectively.</p>
+<p>The sample space S = {ff, fm, mf, mm}, with f and m standing for "female: and "male", respectively.</p>
 <p>Denote these <a target="_blank" rel="noopener" href="https://www.cut-the-knot.org/Probability/Dictionary.shtml#elementary">elementary events</a> in sequence A1, A2, A3, A4.</p>
 <p>他们的概率分别是 1/4, 1/4, 1/4, 1/4; P(Aj) = 1/4, j = 1, 2, 3, 4.</p>
 <p>B 是男孩出生在周二的概率.</p>
 <p>P(B|A1) = 0, 因为A1里面没有男孩.</p>
 <p>P(B|A2) = P(B|A3) = 1/7, because in the two cases the one male bear has the probability 1/7 to have been born on any specific day, Tuesday in particular.</p>
 <p>The most interesting case is A4. The following table is suggestive:</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmwh9fjg3076076q2q.gif" alt="two bears birthdays" /></p>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmwh9fjg3076076q2q.gif" alt="two bears birthdays" /><figcaption aria-hidden="true">two bears birthdays</figcaption>
+</figure>
 <p>由图可知， P(B|A4) = 13/49.</p>
 <p>P(A1|B), P(A2|B), P(A3|B), P(A4|B) 的概率分别是 0, 1/7, 1/7, 13/49，且应该被重新调节，已达到和为1.</p>
 <p>按比例放大，得到P(A1|B) = 0, P(A2|B) = P(A3|B) = 1/7 ÷ 27/49 = 7/27,P(A4|B) = 13/49 ÷ 27/49 = 13/27.</p>
-<p>所以周二出生的男孩的同胞为女性的概率为$ \frac{7}{27} \times 2 = \frac{14}{27}$.</p>
+<p>所以周二出生的男孩的同胞为女性的概率为$   = $.</p>
 <blockquote>
 <p>因此火神作业将一周7天改为一年12个月，答案应该为：</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mfrac><mn>1</mn><mn>12</mn></mfrac><mo>×</mo><mn>2</mn></mrow><mrow><mo stretchy="false">(</mo><mfrac><mrow><mn>12</mn><mo>×</mo><mn>2</mn><mo>−</mo><mn>1</mn></mrow><mrow><mn>12</mn><mo>×</mo><mn>12</mn></mrow></mfrac><mo stretchy="false">)</mo><mo>+</mo><mfrac><mn>1</mn><mn>12</mn></mfrac><mo>×</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>24</mn><mn>47</mn></mfrac><mo>=</mo><mn>0.5106</mn></mrow><annotation encoding="application/x-tex">\frac{\frac{1}{12}\times2}{(\frac{12\times2-1}{12\times12})+\frac{1}{12}\times2} = \frac{24}{47} = 0.5106
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.718547em;vertical-align:-1.138439em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.580108em;"><span style="top:-2.264892em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span><span class="mbin mtight">×</span><span class="mord mtight">1</span><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span><span class="mbin mtight">×</span><span class="mord mtight">2</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.403331em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.7350000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.138439em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.00744em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">4</span><span class="mord">7</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">5</span><span class="mord">1</span><span class="mord">0</span><span class="mord">6</span></span></span></span></span></p>
+<p><span class="math display">\[\frac{\frac{1}{12}\times2}{(\frac{12\times2-1}{12\times12})+\frac{1}{12}\times2} = \frac{24}{47} = 0.5106\]</span></p>
 </blockquote>
-<h2 id="代码验证"><a class="markdownIt-Anchor" href="#代码验证"></a> 代码验证：</h2>
-<h3 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h3>
+<h2 id="代码验证">代码验证：</h2>
+<h3 id="代码">代码：</h3>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#!/usr/bin/env python2</span>
 <span class="token comment"># -*- coding: utf-8 -*-</span>
 
@@ -212,7 +213,7 @@ results <span class="token operator">=</span> <span class="token punctuation">&#
     <span class="token keyword">print</span> v
     <span class="token keyword">print</span> <span class="token number">1.0</span><span class="token operator">*</span>v<span class="token punctuation">[</span><span class="token string">"B"</span><span class="token punctuation">]</span><span class="token operator">/</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span><span class="token string">"G"</span><span class="token punctuation">]</span><span class="token operator">+</span>v<span class="token punctuation">[</span><span class="token string">"B"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>对千万个孩子进行分析，结果应该很精准了！</p>
-<h3 id="运行结果"><a class="markdownIt-Anchor" href="#运行结果"></a> 运行结果：</h3>
+<h3 id="运行结果">运行结果：</h3>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json">------------------------------------------------------------
 one_boy
 <span class="token punctuation">&#123;</span>'B'<span class="token operator">:</span> <span class="token number">2498175</span><span class="token punctuation">,</span> 'G'<span class="token operator">:</span> <span class="token number">5000766</span><span class="token punctuation">&#125;</span>
@@ -234,11 +235,11 @@ one_boy_born_tuesday
 <span class="token number">0.480936559866</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>完美！</p>
-<h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference:</h2>
-<ol>
-<li><a target="_blank" rel="noopener" href="http://www.cut-the-knot.org/Probability/BearBornOnTuesday.shtml">http://www.cut-the-knot.org/Probability/BearBornOnTuesday.shtml</a></li>
-<li><a target="_blank" rel="noopener" href="https://math.stackexchange.com/questions/2769616/two-child-probability-paradox-a-nuanced-explanation">https://math.stackexchange.com/questions/2769616/two-child-probability-paradox-a-nuanced-explanation</a></li>
-<li><a target="_blank" rel="noopener" href="https://maths.ucd.ie/~plynch/Publications/BIMS-TwoChildParadox.pdf">https://maths.ucd.ie/~plynch/Publications/BIMS-TwoChildParadox.pdf</a></li>
+<h2 id="reference">Reference:</h2>
+<ol type="1">
+<li>http://www.cut-the-knot.org/Probability/BearBornOnTuesday.shtml</li>
+<li>https://math.stackexchange.com/questions/2769616/two-child-probability-paradox-a-nuanced-explanation</li>
+<li>https://maths.ucd.ie/~plynch/Publications/BIMS-TwoChildParadox.pdf</li>
 </ol>
 
     </div>

@@ -10,17 +10,17 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简介 昨日看见卿工发出的一篇文章“动态展示孩子的相貌变化”，感觉很有意思。遂到github上面拉下来代码试了试。本文是一片教程，附带一些避免坑的注意事项。  项目地址：https:&#x2F;&#x2F;github.com&#x2F;andrewdcampbell&#x2F;face-movie  首先上图看看这个项目的目标吧：  对的！通过面部识别来进行面部位置重合处理，然后进行插帧来做出渐变动画，最后可以配上音乐（可选）。 那么">
+  <meta name="description" content="简介 昨日看见卿工发出的一篇文章“动态展示孩子的相貌变化”，感觉很有意思。遂到github上面拉下来代码试了试。本文是一片教程，附带一些避免坑的注意事项。  项目地址：https:&#x2F;&#x2F;github.com&#x2F;andrewdcampbell&#x2F;face-movie  首先上图看看这个项目的目标吧：  face-demo  对的！通过面部识别来进行面部位置重合处理，然后进行插帧来做出渐变动画，最后可以配上">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面孔变迁动画制作">
-<meta property="og:url" content="https://bingcheng.openmc.cn/zh-CN/maker/%E9%9D%A2%E5%AD%94%E5%8F%98%E8%BF%81%E5%8A%A8%E7%94%BB%E5%88%B6%E4%BD%9C.html">
+<meta property="og:url" content="https://bingcheng.openmc.cn/blog-zh/zh-CN/maker/%E9%9D%A2%E5%AD%94%E5%8F%98%E8%BF%81%E5%8A%A8%E7%94%BB%E5%88%B6%E4%BD%9C.html">
 <meta property="og:site_name" content="JAZZ IT UP">
-<meta property="og:description" content="简介 昨日看见卿工发出的一篇文章“动态展示孩子的相貌变化”，感觉很有意思。遂到github上面拉下来代码试了试。本文是一片教程，附带一些避免坑的注意事项。  项目地址：https:&#x2F;&#x2F;github.com&#x2F;andrewdcampbell&#x2F;face-movie  首先上图看看这个项目的目标吧：  对的！通过面部识别来进行面部位置重合处理，然后进行插帧来做出渐变动画，最后可以配上音乐（可选）。 那么">
+<meta property="og:description" content="简介 昨日看见卿工发出的一篇文章“动态展示孩子的相貌变化”，感觉很有意思。遂到github上面拉下来代码试了试。本文是一片教程，附带一些避免坑的注意事项。  项目地址：https:&#x2F;&#x2F;github.com&#x2F;andrewdcampbell&#x2F;face-movie  首先上图看看这个项目的目标吧：  face-demo  对的！通过面部识别来进行面部位置重合处理，然后进行插帧来做出渐变动画，最后可以配上">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmdx1ftg30gh07he86.gif">
-<meta property="og:image" content="https://bingcheng.openmc.cn/zh-CN/maker/MD.assets/BASE_IMAGE.jpg">
+<meta property="og:image" content="https://bingcheng.openmc.cn/blog-zh/zh-CN/maker/MD.assets/BASE_IMAGE.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmetb9yj31fk0aktmx.jpg">
-<meta property="og:image" content="https://bingcheng.openmc.cn/zh-CN/maker/MD.assets/image-20200428135623427.png">
+<meta property="og:image" content="https://bingcheng.openmc.cn/blog-zh/zh-CN/maker/MD.assets/image-20200428135623427.png">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmggyiwj30uw0i07b0.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmh0xv5j30va0icdir.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmdx1ftg30gh07he86.gif">
@@ -76,7 +76,7 @@
         <span class="iconfont icon-search"></span>
       </a>
             
-      <!-- <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://bingcheng.openmc.cn"></form> -->
+      <!-- <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://bingcheng.openmc.cn/blog-zh"></form> -->
     </div>
     <div class="search-wrap">
       <div class="search-content animated fade-in">
@@ -148,36 +148,35 @@
   </section>
   <section class="content">
     <div class="article-entry" itemprop="articleBody">
-      <h2 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h2>
+      <h2 id="简介">简介</h2>
 <p>昨日看见<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/CyS6duewqNsTzP-my1cKKw">卿工</a>发出的一篇文章“<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/CyS6duewqNsTzP-my1cKKw">动态展示孩子的相貌变化</a>”，感觉很有意思。遂到github上面拉下来代码试了试。本文是一片教程，附带一些避免坑的注意事项。</p>
 <blockquote>
-<p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/andrewdcampbell/face-movie">https://github.com/andrewdcampbell/face-movie</a></p>
+<p>项目地址：https://github.com/andrewdcampbell/face-movie</p>
 </blockquote>
 <p>首先上图看看这个项目的目标吧：</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmdx1ftg30gh07he86.gif" alt="face-demo" /></p>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmdx1ftg30gh07he86.gif" alt="face-demo" /><figcaption aria-hidden="true">face-demo</figcaption>
+</figure>
 <p>对的！通过面部识别来进行面部位置重合处理，然后进行插帧来做出渐变动画，最后可以配上音乐（可选）。</p>
 <p>那么，我们开始吧！</p>
 <hr />
-<h2 id="安装依赖"><a class="markdownIt-Anchor" href="#安装依赖"></a> 安装依赖</h2>
+<h2 id="安装依赖">安装依赖</h2>
 <p>按照github代码库中描述：</p>
 <blockquote>
-<h2 id="requirements"><a class="markdownIt-Anchor" href="#requirements"></a> Requirements</h2>
+<h2 id="requirements">Requirements</h2>
 <ul>
 <li>OpenCV
 <ul>
 <li>For conda users, run <code>conda install -c conda-forge opencv</code>.</li>
-</ul>
-</li>
+</ul></li>
 <li>Dlib
 <ul>
 <li>For conda users, run <code>conda install -c conda-forge dlib</code>.</li>
-</ul>
-</li>
+</ul></li>
 <li>ffmpeg
 <ul>
 <li>For conda users, run <code>conda install -c conda-forge ffmpeg</code>.</li>
-</ul>
-</li>
+</ul></li>
 <li>scipy</li>
 <li>numpy</li>
 <li>matplotlib</li>
@@ -187,35 +186,43 @@
 <p>注意！这儿有个问题，由于代码是2019年版本，所以新的opencv库无法正常显示，应该安装<code>opencv-python==3.4.5.20</code>版本。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">pip install opencv<span class="token operator">-</span>python<span class="token operator">==</span><span class="token number">3.4</span><span class="token number">.5</span><span class="token number">.20</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <hr />
-<h2 id="图片位置-大小修改"><a class="markdownIt-Anchor" href="#图片位置-大小修改"></a> 图片位置、大小修改</h2>
+<h2 id="图片位置大小修改">图片位置、大小修改</h2>
 <p>首先，新建一张画布，大小为你的目标大小，并将一张大头照粘贴到你想要的位置：如下图</p>
-<img src="./MD.assets/BASE_IMAGE.jpg" alt="BASE_IMAGE" style="zoom: 33%;" />
+<p><img src="./MD.assets/BASE_IMAGE.jpg" alt="BASE_IMAGE" style="zoom: 33%;" /></p>
 <p>这张图片就会成为所有图片的位置与大小的参照——其它图片会按照这张图片调整方向，大小。设这张图片为<code>参考图.jpg</code>。</p>
 <hr />
 <p><strong>命令行：</strong></p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python face-movie&#x2F;align.py -images &quot;.&#x2F;原始图片文件夹&quot; -target &quot;.&#x2F;参考图.jpg&quot; -overlay -border 5 -outdir &quot;.&#x2F;修改后输出图片文件夹&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>运行时可能要你去辨别哪张脸是目人物，<code>terminal</code>如下所示：</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmetb9yj31fk0aktmx.jpg" alt="image-20200428135618747" /></p>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmetb9yj31fk0aktmx.jpg" alt="image-20200428135618747" /><figcaption aria-hidden="true">image-20200428135618747</figcaption>
+</figure>
 <p>弹出的窗口如下：（这个地方如果opencv版本不对，会显示异常）</p>
-<img src="./MD.assets/image-20200428135623427.png" alt="image-20200428135623427" style="zoom: 25%;" />
+<p><img src="./MD.assets/image-20200428135623427.png" alt="image-20200428135623427" style="zoom: 25%;" /></p>
 <hr />
 <p><strong>结果：</strong></p>
 <p>在运行后，你可以对比原始图片与结果图片：</p>
 <blockquote>
 <p><strong>原始图片：</strong></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmggyiwj30uw0i07b0.jpg" alt="image-20200428140559487" /></p>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmggyiwj30uw0i07b0.jpg" alt="image-20200428140559487" /><figcaption aria-hidden="true">image-20200428140559487</figcaption>
+</figure>
 </blockquote>
 <blockquote>
 <p><strong>结果图片：</strong></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmh0xv5j30va0icdir.jpg" alt="image-20200428140635735" /></p>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmh0xv5j30va0icdir.jpg" alt="image-20200428140635735" /><figcaption aria-hidden="true">image-20200428140635735</figcaption>
+</figure>
 </blockquote>
 <hr />
-<h2 id="制作插帧影片"><a class="markdownIt-Anchor" href="#制作插帧影片"></a> 制作插帧影片</h2>
+<h2 id="制作插帧影片">制作插帧影片</h2>
 <p><strong>命令行：</strong></p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python face-movie&#x2F;main.py -morph -images &quot;.&#x2F;修改后输出图片文件夹&quot; -td 1.0 [转场动画秒数] -pd 2.0 [图片静止秒数] -fps 24 [帧率] -out 目标视频文件.mp4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <hr />
 <p><strong>结果：</strong></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmdx1ftg30gh07he86.gif" alt="face-demo" /></p>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giscmdx1ftg30gh07he86.gif" alt="face-demo" /><figcaption aria-hidden="true">face-demo</figcaption>
+</figure>
 <hr />
 
     </div>
